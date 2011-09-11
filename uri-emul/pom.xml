@@ -106,7 +106,6 @@
               <goal>test</goal>
             </goals>
           </execution>
-          <!-- 
           <execution>
             <id>production-mode</id>
             <phase>integration-test</phase>
@@ -117,7 +116,6 @@
               <productionMode>true</productionMode>
             </configuration>
           </execution>
-          -->
         </executions>
       </plugin>
     </plugins>
