@@ -17,7 +17,7 @@ import org.kjots.lib.gwt.client.org.apache.harmony.luni.tests.java.net.URISyntax
  * Created: 23rd March 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
- * @since 11.5.8
+ * @since 1.0
  */
 public class UriEmulGwtTestSuite extends GWTTestSuite {
   /**

@@ -11,7 +11,7 @@ import com.google.gwt.junit.client.GWTTestCase;
  * Created: 23rd March 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
- * @since 11.5.8
+ * @since 1.0
  */
 public abstract class UriEmulGwtTestBase extends GWTTestCase {
   /**
