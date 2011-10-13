@@ -21,9 +21,9 @@
   
   <parent>
     <groupId>org.kjots.gwt-lib</groupId>
-    <artifactId>org.kjots.gwt-lib.maven-parent</artifactId>
+    <artifactId>maven-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>maven-parent/pom.xml</relativePath>
+    <relativePath>../org.kjots.gwt-lib.maven-parent/pom.xml</relativePath>
   </parent>
   
   <artifactId>org.kjots.gwt-lib</artifactId>
@@ -39,24 +39,8 @@
     </license>
   </licenses>
   
-  <scm>
-    <connection>scm:hg:http://kjots-org-java-lib.googlecode.com/hg/</connection>
-    <developerConnection>scm:hg:https://kjots-org-java-lib.googlecode.com/hg/</developerConnection>
-    <url>http://code.google.com/p/kjots-org-java-lib/source/browse/</url>
-  </scm>
-  
-  <distributionManagement>
-    <downloadUrl>http://code.google.com/p/kjots-org-java-lib/</downloadUrl>
-  </distributionManagement>
-  
-  <issueManagement>
-    <system>Google Code</system>
-    <url>http://code.google.com/p/kjots-org-java-lib/issues/list</url>
-  </issueManagement>
-  
   <modules>
-    <module>maven-parent</module>
-    
-    <module>uri-emul</module>
+    <module>../org.kjots.gwt-lib.maven-parent</module>
+    <module>../org.kjots.gwt-lib.uri-emul</module>
   </modules>
 </project>
