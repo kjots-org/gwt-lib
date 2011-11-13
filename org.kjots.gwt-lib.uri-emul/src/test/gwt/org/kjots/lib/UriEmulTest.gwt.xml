@@ -14,15 +14,17 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.3/distro-source/core/src/gwt-module.dtd">
+<!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
   org.kjots.lib.UriEmulTest
   
   Created: 19th March 2011.
   
   @author Karl J. Ots <kjots@kjots.org>
-  @since 11.5.8
+  @since 1.0
 -->
 <module>
   <inherits name="org.kjots.lib.UriEmul"/>
+  
+  <source path="gwt/client"/>
 </module>
