@@ -26,5 +26,5 @@
 <module>
   <inherits name="com.google.gwt.http.HTTP"/>
   
-  <super-source path="gwt/emul"/>
+  <super-source path="gwt/emul/uri"/>
 </module>
