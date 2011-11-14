@@ -32,10 +32,6 @@
   
   <name>kjots.org GWT Library - SLF4J Support</name>
   
-  <properties>
-    <version.slf4j>1.6.3</version.slf4j>
-  </properties>
-  
   <dependencies>
     <dependency>
       <groupId>org.slf4j</groupId>
