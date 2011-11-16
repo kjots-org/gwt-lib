@@ -16,7 +16,7 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
-  org.kjots.lib.UriEmulTest
+  org.kjots.lib.gwt.UriEmulTest
   
   Created: 19th March 2011.
   
@@ -24,7 +24,5 @@
   @since 1.0
 -->
 <module>
-  <inherits name="org.kjots.lib.UriEmul"/>
-  
-  <source path="gwt/client"/>
+  <inherits name="org.kjots.lib.gwt.UriEmul"/>
 </module>

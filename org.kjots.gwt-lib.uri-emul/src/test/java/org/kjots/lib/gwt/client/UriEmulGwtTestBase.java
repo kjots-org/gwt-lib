@@ -21,6 +21,6 @@ public abstract class UriEmulGwtTestBase extends GWTTestCase {
    */
   @Override
   public final String getModuleName() {
-    return "org.kjots.lib.UriEmulTest";
+    return "org.kjots.lib.gwt.UriEmulTest";
   }
 }
