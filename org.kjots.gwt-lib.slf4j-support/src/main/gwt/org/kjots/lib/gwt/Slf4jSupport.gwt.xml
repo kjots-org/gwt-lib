@@ -16,7 +16,7 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
-  org.kjots.lib.Slf4jSupportTest
+  org.kjots.lib.gwt.Slf4jSupport
   
   Created: 13th November 2011.
   
@@ -24,7 +24,7 @@
   @since 1.0
 -->
 <module>
-  <inherits name="org.kjots.lib.Slf4jSupport"/>
+  <inherits name="org.slf4j.Slf4j"/>
   
-  <source path="gwt/client"/>
+  <super-source path="emul/slf4j"/>
 </module>

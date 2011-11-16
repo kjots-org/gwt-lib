@@ -21,6 +21,6 @@ public class Slf4jSupportGwtTestBase extends GWTTestCase {
    */
   @Override
   public final String getModuleName() {
-    return "org.kjots.lib.Slf4jSupportTest";
+    return "org.kjots.lib.gwt.Slf4jSupportTest";
   }
 }
