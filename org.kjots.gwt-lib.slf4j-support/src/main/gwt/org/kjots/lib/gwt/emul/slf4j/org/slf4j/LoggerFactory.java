@@ -3,10 +3,9 @@
  */
 package org.slf4j;
 
-import org.slf4j.ILoggerFactory;
-import org.slf4j.Logger;
-import org.slf4j.helpers.NOPLoggerFactory;
-import org.slf4j.impl.StaticLoggerBinder;
+import org.kjots.lib.gwt.client.slf4j.GwtLoggerFactory;
+
+import com.google.gwt.core.client.GWT;
 
 /**
  * Logger Factory.
@@ -17,7 +16,7 @@ import org.slf4j.impl.StaticLoggerBinder;
  * @since 1.0
  */
 public final class LoggerFactory {
-  private static NOPLoggerFactory NOP_FALLBACK_FACTORY = new NOPLoggerFactory();
+  private static final ILoggerFactory loggerFactory = GWT.create(GwtLoggerFactory.class);
   
   // This method has been copied verbatim from source of the upstream LoggerFactory class.
   public static Logger getLogger(String name) {
@@ -31,7 +30,6 @@ public final class LoggerFactory {
   }
 
   public static ILoggerFactory getILoggerFactory() {
-    // TODO: Implement this properly.
-    return NOP_FALLBACK_FACTORY;
+    return loggerFactory;
   }
 }

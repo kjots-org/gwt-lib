@@ -3,9 +3,9 @@
  */
 package org.slf4j;
 
-import org.slf4j.IMarkerFactory;
-import org.slf4j.Marker;
-import org.slf4j.helpers.BasicMarkerFactory;
+import org.kjots.lib.gwt.client.slf4j.GwtMarkerFactory;
+
+import com.google.gwt.core.client.GWT;
 
 /**
  * Marker Factory.
@@ -16,8 +16,7 @@ import org.slf4j.helpers.BasicMarkerFactory;
  * @since 1.0
  */
 public class MarkerFactory {
-  // TODO: Implement this properly.
-  private static IMarkerFactory markerFactory = new BasicMarkerFactory();
+  private static final IMarkerFactory markerFactory = GWT.create(GwtMarkerFactory.class);
   
   // This constructor has been copied verbatim from source of the upstream MarkerFactory class.
   private MarkerFactory() {

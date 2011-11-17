@@ -5,8 +5,10 @@ package org.slf4j;
 
 import java.util.Map;
 
-import org.slf4j.helpers.NOPMDCAdapter;
+import org.kjots.lib.gwt.client.slf4j.GwtMDCAdapter;
 import org.slf4j.spi.MDCAdapter;
+
+import com.google.gwt.core.client.GWT;
 
 /**
  * MDC.
@@ -19,8 +21,7 @@ import org.slf4j.spi.MDCAdapter;
 public class MDC {
   private static final String NULL_MDCA_URL = "http://www.slf4j.org/codes.html#null_MDCA";
   
-  // TODO: Implement this properly.
-  private static MDCAdapter mdcAdapter = new NOPMDCAdapter();
+  private static MDCAdapter mdcAdapter = GWT.create(GwtMDCAdapter.class);
   
   // This constructor has been copied verbatim from source of the upstream MDC class.
   private MDC() {
