@@ -26,5 +26,7 @@
 <module>
   <inherits name="org.slf4j.Slf4j"/>
   
+  <source path="client"/>
+  
   <super-source path="emul/slf4j"/>
 </module>
