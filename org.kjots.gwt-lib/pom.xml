@@ -61,6 +61,7 @@
   
   <properties>
     <version.slf4j>1.6.3</version.slf4j>
+    <version.gwtlog>3.1.6</version.gwtlog>
     
     <version.junit>4.8.2</version.junit>
     <version.scala>2.9.1</version.scala>
@@ -171,6 +172,7 @@
   <modules>
     <module>../org.kjots.gwt-lib.signal-event</module>
     <module>../org.kjots.gwt-lib.slf4j-support</module>
+    <module>../org.kjots.gwt-lib.slf4j-gwtlog</module>
     <module>../org.kjots.gwt-lib.uri-emul</module>
   </modules>
 </project>
