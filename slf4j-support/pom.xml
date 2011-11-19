@@ -23,7 +23,6 @@
     <groupId>org.kjots.gwt-lib</groupId>
     <artifactId>org.kjots.gwt-lib</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../org.kjots.gwt-lib/pom.xml</relativePath>
   </parent>
   
   <artifactId>slf4j-support</artifactId>

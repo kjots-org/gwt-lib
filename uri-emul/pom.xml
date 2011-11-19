@@ -23,12 +23,11 @@
     <groupId>org.kjots.gwt-lib</groupId>
     <artifactId>org.kjots.gwt-lib</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../org.kjots.gwt-lib/pom.xml</relativePath>
   </parent>
   
-  <artifactId>signal-event</artifactId>
+  <artifactId>uri-emul</artifactId>
   
   <packaging>jar</packaging>
   
-  <name>kjots.org GWT Library - Signal Event</name>
+  <name>kjots.org GWT Library - java.net.URI Emulation</name>
 </project>

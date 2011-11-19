@@ -365,9 +365,9 @@
   </build>
   
   <modules>
-    <module>../org.kjots.gwt-lib.signal-event</module>
-    <module>../org.kjots.gwt-lib.slf4j-support</module>
-    <module>../org.kjots.gwt-lib.slf4j-gwtlog</module>
-    <module>../org.kjots.gwt-lib.uri-emul</module>
+    <module>signal-event</module>
+    <module>slf4j-support</module>
+    <module>slf4j-gwtlog</module>
+    <module>uri-emul</module>
   </modules>
 </project>

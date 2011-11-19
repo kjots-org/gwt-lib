@@ -23,12 +23,24 @@
     <groupId>org.kjots.gwt-lib</groupId>
     <artifactId>org.kjots.gwt-lib</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../org.kjots.gwt-lib/pom.xml</relativePath>
   </parent>
   
-  <artifactId>uri-emul</artifactId>
+  <artifactId>slf4j-gwtlog</artifactId>
   
   <packaging>jar</packaging>
   
-  <name>kjots.org GWT Library - java.net.URI Emulation</name>
+  <name>kjots.org GWT Library - SLF4J gwt-log</name>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.kjots.gwt-lib</groupId>
+      <artifactId>slf4j-support</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.allen-sauer.gwt.log</groupId>
+      <artifactId>gwt-log</artifactId>
+      <version>${version.gwtlog}</version>
+    </dependency>
+  </dependencies>
 </project>
