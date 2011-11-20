@@ -1,2 +1,6 @@
 /eclipse-bin
 /target
+/.gwt
+/tomcat
+/www-test
+/gwt-unitCache

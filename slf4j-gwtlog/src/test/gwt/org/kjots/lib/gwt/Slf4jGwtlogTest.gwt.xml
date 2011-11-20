@@ -16,17 +16,13 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
-  org.kjots.lib.gwt.Slf4jGwtlog
+  org.kjots.lib.gwt.Slf4jGwtlogTest
   
-  Created: 18th November 2011.
+  Created: 20th November 2011.
   
   @author Karl J. Ots <kjots@kjots.org>
   @since 1.0
 -->
 <module>
-  <inherits name="org.kjots.lib.gwt.Slf4jSupport"/>
-  
-  <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" />
-  
-  <source path="client"/>
+  <inherits name="org.kjots.lib.gwt.Slf4jGwtlog"/>
 </module>

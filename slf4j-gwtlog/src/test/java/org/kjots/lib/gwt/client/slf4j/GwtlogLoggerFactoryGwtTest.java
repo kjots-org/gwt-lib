@@ -15,23 +15,35 @@
  */
 package org.kjots.lib.gwt.client.slf4j;
 
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * gwt-log Logger Factory.
+ * gwt-log Logger Factory GWT Test.
  * <p>
- * Created: 17th November 2011.
+ * Created: 20th November 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class GwtlogLoggerFactory extends GwtLoggerFactory {
+public class GwtlogLoggerFactoryGwtTest extends Slf4jGwtlogGwtTestBase {
   /**
-   * @see ILoggerFactory#getLogger(String)
+   * Test the retrieval of a logger by name.
    */
-  @Override
-  public Logger getLogger(String name) {
-    return GwtlogLogger.get();
+  public void testGetLoggerByName() {
+    Logger logger = LoggerFactory.getLogger("loggerName");
+    
+    assertNotNull(logger);
+    assertTrue(logger instanceof GwtlogLogger);
+  }
+  
+  /**
+   * Test the retrieval of a logger by class.
+   */
+  public void testGetLoggerByClass() {
+    Logger logger = LoggerFactory.getLogger(Object.class);
+    
+    assertNotNull(logger);
+    assertTrue(logger instanceof GwtlogLogger);
   }
 }

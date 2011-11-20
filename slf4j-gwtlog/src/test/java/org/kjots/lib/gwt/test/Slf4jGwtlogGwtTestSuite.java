@@ -15,29 +15,29 @@
  */
 package org.kjots.lib.gwt.test;
 
-import org.kjots.lib.gwt.client.slf4j.MockLoggerFactoryGwtTest;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+import org.kjots.lib.gwt.client.slf4j.GwtlogLoggerFactoryGwtTest;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
 
 /**
- * SLF4J Support GWT Test Suite.
+ * SLF4J gwt-log GWT Test Suite.
  * <p>
- * Created: 13th November 2011.
+ * Created: 20th November 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class Slf4jSupportGwtTestSuite extends GWTTestSuite {
+public class Slf4jGwtlogGwtTestSuite extends GWTTestSuite {
   /**
    * Create the test suite.
    *
    * @return The test suite.
    */
   public static Test suite() {
-    Slf4jSupportGwtTestSuite suite = new Slf4jSupportGwtTestSuite();
+    Slf4jGwtlogGwtTestSuite suite = new Slf4jGwtlogGwtTestSuite();
     
     addTestSuites(suite);
     
@@ -50,16 +50,16 @@ public class Slf4jSupportGwtTestSuite extends GWTTestSuite {
    * @param suite The test suite.
    */
   public static void addTestSuites(TestSuite suite) {
-    suite.addTestSuite(MockLoggerFactoryGwtTest.class);
+    suite.addTestSuite(GwtlogLoggerFactoryGwtTest.class);
   }
   
   /**
-   * Construct a new SLF4J Support GWT Test Suite.
+   * Construct a new SLF4J gwt-log GWT Test Suite.
    * <p>
    * This constructor is declared <code>private</code> to prevent external
    * instantiation.
    */
-  private Slf4jSupportGwtTestSuite() {
-    super("SLF4J Support GWT Test Suite.");
+  private Slf4jGwtlogGwtTestSuite() {
+    super("SLF4J gwt-log GWT Test Suite.");
   }
 }

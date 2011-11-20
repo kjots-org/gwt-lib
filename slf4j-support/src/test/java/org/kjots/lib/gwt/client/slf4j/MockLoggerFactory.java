@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kjots.lib.gwt.client;
+package org.kjots.lib.gwt.client.slf4j;
 
-import com.google.gwt.junit.client.GWTTestCase;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
 
 /**
- * SLF4J Support GWT Test Base.
+ * Mock Logger Factory.
  * <p>
- * Created: 13th November 2011.
+ * Created: 20th November 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class Slf4jSupportGwtTestBase extends GWTTestCase {
+public final class MockLoggerFactory implements ILoggerFactory {
   /**
-   * Retrieve the name of the GWT module.
-   *
-   * @return The name of the GWT module.
+   * @see ILoggerFactory#getLogger(String)
    */
   @Override
-  public final String getModuleName() {
-    return "org.kjots.lib.gwt.Slf4jSupportTest";
+  public Logger getLogger(String name) {
+    return new MockLogger(name);
   }
 }
