@@ -35,6 +35,7 @@ public class GwtlogLoggerFactoryGwtTest extends Slf4jGwtlogGwtTestBase {
     
     assertNotNull(logger);
     assertTrue(logger instanceof GwtlogLogger);
+    assertEquals("loggerName", logger.getName());
   }
   
   /**
@@ -45,5 +46,6 @@ public class GwtlogLoggerFactoryGwtTest extends Slf4jGwtlogGwtTestBase {
     
     assertNotNull(logger);
     assertTrue(logger instanceof GwtlogLogger);
+    assertEquals(Object.class.getName(), logger.getName());
   }
 }

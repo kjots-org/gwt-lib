@@ -30,16 +30,13 @@ import com.allen_sauer.gwt.log.client.Log;
  */
 @SuppressWarnings("serial")
 public class GwtlogLogger extends MarkerIgnoringBase {
-  /** The instance of the gwt-log logger. */
-  public static final GwtlogLogger instance = new GwtlogLogger();
-  
   /**
-   * Retrieve the instance of the gwt-log logger.
+   * Construct a new gwt-log Logger.
    *
-   * @return The instance of the gwt-log logger.
+   * @param name The name.
    */
-  public static GwtlogLogger get() {
-    return instance;
+  public GwtlogLogger(String name) {
+    this.name = name;
   }
   
   /**
@@ -55,7 +52,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String msg) {
-    Log.trace(msg);
+    Log.trace(this.name, msg);
   }
 
   /**
@@ -63,7 +60,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String format, Object arg) {
-    Log.trace(format(format, arg));
+    Log.trace(this.name, format(format, arg));
   }
 
   /**
@@ -71,7 +68,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String format, Object arg1, Object arg2) {
-    Log.trace(format(format, arg1, arg2));
+    Log.trace(this.name, format(format, arg1, arg2));
   }
 
   /**
@@ -79,7 +76,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String format, Object[] argArray) {
-    Log.trace(format(format, argArray));
+    Log.trace(this.name, format(format, argArray));
   }
 
   /**
@@ -87,7 +84,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String msg, Throwable t) {
-    Log.trace(msg, t);
+    Log.trace(this.name, msg, t);
   }
 
   /**
@@ -103,7 +100,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String msg) {
-    Log.debug(msg);
+    Log.debug(this.name, msg);
   }
 
   /**
@@ -111,7 +108,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object arg) {
-    Log.debug(format(format, arg));
+    Log.debug(this.name, format(format, arg));
   }
 
   /**
@@ -119,7 +116,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object arg1, Object arg2) {
-    Log.debug(format(format, arg1, arg2));
+    Log.debug(this.name, format(format, arg1, arg2));
   }
 
   /**
@@ -127,7 +124,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object[] argArray) {
-    Log.debug(format(format, argArray));
+    Log.debug(this.name, format(format, argArray));
   }
 
   /**
@@ -135,7 +132,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String msg, Throwable t) {
-    Log.debug(msg, t);
+    Log.debug(this.name, msg, t);
   }
 
   /**
@@ -151,7 +148,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String msg) {
-    Log.info(msg);
+    Log.info(this.name, msg);
   }
 
   /**
@@ -159,7 +156,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object arg) {
-    Log.info(format(format, arg));
+    Log.info(this.name, format(format, arg));
   }
 
   /**
@@ -167,7 +164,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object arg1, Object arg2) {
-    Log.info(format(format, arg1, arg2));
+    Log.info(this.name, format(format, arg1, arg2));
   }
 
   /**
@@ -175,7 +172,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object[] argArray) {
-    Log.info(format(format, argArray));
+    Log.info(this.name, format(format, argArray));
   }
 
   /**
@@ -183,7 +180,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String msg, Throwable t) {
-    Log.info(msg, t);
+    Log.info(this.name, msg, t);
   }
 
   /**
@@ -199,7 +196,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String msg) {
-    Log.warn(msg);
+    Log.warn(this.name, msg);
   }
 
   /**
@@ -207,7 +204,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object arg) {
-    Log.warn(format(format, arg));
+    Log.warn(this.name, format(format, arg));
   }
 
   /**
@@ -215,7 +212,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object arg1, Object arg2) {
-    Log.warn(format(format, arg1, arg2));
+    Log.warn(this.name, format(format, arg1, arg2));
   }
 
   /**
@@ -223,7 +220,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object[] argArray) {
-    Log.warn(format(format, argArray));
+    Log.warn(this.name, format(format, argArray));
   }
 
   /**
@@ -231,7 +228,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String msg, Throwable t) {
-    Log.warn(msg, t);
+    Log.warn(this.name, msg, t);
   }
 
   /**
@@ -247,7 +244,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String msg) {
-    Log.error(msg);
+    Log.error(this.name, msg);
   }
 
   /**
@@ -255,7 +252,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object arg) {
-    Log.error(format(format, arg));
+    Log.error(this.name, format(format, arg));
   }
 
   /**
@@ -263,7 +260,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object arg1, Object arg2) {
-    Log.error(format(format, arg1, arg2));
+    Log.error(this.name, format(format, arg1, arg2));
   }
 
   /**
@@ -271,7 +268,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object[] argArray) {
-    Log.error(format(format, argArray));
+    Log.error(this.name, format(format, argArray));
   }
 
   /**
@@ -279,7 +276,7 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String msg, Throwable t) {
-    Log.error(msg, t);
+    Log.error(this.name, msg, t);
   }
   
   /**
@@ -291,15 +288,5 @@ public class GwtlogLogger extends MarkerIgnoringBase {
    */
   private String format(String format, Object... args) {
     throw new UnsupportedOperationException();
-  }
-  
-  /**
-   * Construct a new gwt-log Logger.
-   * <p>
-   * This constructor is declared <code>private</code> to prevent external
-   * instantiation.
-   */
-  private GwtlogLogger() {
-    this.name = "gwt-log";
   }
 }

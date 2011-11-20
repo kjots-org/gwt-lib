@@ -32,6 +32,6 @@ public class GwtlogLoggerFactory implements ILoggerFactory {
    */
   @Override
   public Logger getLogger(String name) {
-    return GwtlogLogger.get();
+    return new GwtlogLogger(name);
   }
 }
