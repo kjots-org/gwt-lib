@@ -26,7 +26,7 @@ import org.slf4j.Logger;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class GwtlogLoggerFactory extends GwtLoggerFactory {
+public class GwtlogLoggerFactory implements ILoggerFactory {
   /**
    * @see ILoggerFactory#getLogger(String)
    */
