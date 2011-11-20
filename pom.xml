@@ -27,7 +27,7 @@
   
   <name>kjots.org GWT Library</name>
   <description>kjots.org GWT Library</description>
-  <url>http://kjots.org/GWT-Library/</url>
+  <url>http://kjots.org/gwt-lib/</url>
   
   <licenses>
     <license>
@@ -37,14 +37,14 @@
   </licenses>
   
   <scm>
-    <connection>scm:git:https://github.com/kjots-org/GWT-Library.git</connection>
-    <developerConnection>scm:git:https://github.com/kjots-org/GWT-Library.git</developerConnection>
-    <url>https://github.com/kjots-org/GWT-Library/tree/master/</url>
+    <connection>scm:git:https://github.com/kjots-org/gwt-lib.git</connection>
+    <developerConnection>scm:git:https://github.com/kjots-org/gwt-lib.git</developerConnection>
+    <url>https://github.com/kjots-org/gwt-lib/tree/master/</url>
   </scm>
   
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/kjots-org/GWT-Library/issues</url>
+    <url>https://github.com/kjots-org/gwt-lib/issues</url>
   </issueManagement>
   
   <distributionManagement>
@@ -61,7 +61,7 @@
     <site>
       <id>kjots.org-gwt-lib.site</id>
       <name>kjots.org GWT Library Site</name>
-      <url>http://kjots.org/GWT-Library/</url>
+      <url>http://kjots.org/gwt-lib/</url>
     </site>
   </distributionManagement>
   
