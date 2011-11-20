@@ -34,14 +34,12 @@
   
   <dependencies>
     <dependency>
-      <groupId>org.kjots.gwt-lib</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>slf4j-support</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.allen-sauer.gwt.log</groupId>
       <artifactId>gwt-log</artifactId>
-      <version>${version.gwtlog}</version>
     </dependency>
   </dependencies>
 </project>
