@@ -92,7 +92,7 @@
     
     <version.gwt>2.4.0</version.gwt>
     <version.slf4j>1.6.3</version.slf4j>
-    <version.gwtlog>3.1.6</version.gwtlog>
+    <version.gwt-log>3.1.6</version.gwt-log>
     
     <version.junit>4.8.2</version.junit>
     <version.scala>2.9.1</version.scala>
@@ -130,7 +130,7 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>slf4j-gwtlog</artifactId>
+        <artifactId>slf4j-gwt-log</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -157,7 +157,7 @@
       <dependency>
         <groupId>com.allen-sauer.gwt.log</groupId>
         <artifactId>gwt-log</artifactId>
-        <version>${version.gwtlog}</version>
+        <version>${version.gwt-log}</version>
       </dependency>
       <dependency>
         <groupId>com.google.gwt</groupId>
@@ -519,7 +519,7 @@
   <modules>
     <module>signal-event</module>
     <module>slf4j-support</module>
-    <module>slf4j-gwtlog</module>
+    <module>slf4j-gwt-log</module>
     <module>uri-emul</module>
   </modules>
 </project>
