@@ -30,4 +30,5 @@
   <packaging>jar</packaging>
   
   <name>kjots.org GWT Library - Signal Event</name>
+  <description>kjots.org GWT Library - Signal Event</description>
 </project>

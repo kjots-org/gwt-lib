@@ -30,4 +30,5 @@
   <packaging>jar</packaging>
   
   <name>kjots.org GWT Library - java.net.URI Emulation</name>
+  <description>kjots.org GWT Library - java.net.URI Emulation</description>
 </project>

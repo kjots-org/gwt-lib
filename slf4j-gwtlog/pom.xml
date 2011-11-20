@@ -30,6 +30,7 @@
   <packaging>jar</packaging>
   
   <name>kjots.org GWT Library - SLF4J gwt-log</name>
+  <description>kjots.org GWT Library - SLF4J gwt-log</description>
   
   <dependencies>
     <dependency>

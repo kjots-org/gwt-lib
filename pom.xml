@@ -26,6 +26,8 @@
   <packaging>pom</packaging>
   
   <name>kjots.org GWT Library</name>
+  <description>kjots.org GWT Library</description>
+  <url>http://dev.kjots.org/GWT-Library/</url>
   
   <licenses>
     <license>
