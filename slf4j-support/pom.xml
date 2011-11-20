@@ -37,10 +37,42 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <classifier>sources</classifier>
-    </dependency>
   </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack:slf4j-api-sources</id>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-api</artifactId>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                  <includes>org/slf4j/**/*.java</includes>
+                  <excludes>
+                    org/slf4j/LoggerFactory.java,
+                    org/slf4j/MarkerFactory.java,
+                    org/slf4j/MDC.java,
+                    org/slf4j/helpers/BasicMDCAdapter.java,
+                    org/slf4j/helpers/NamedLoggerBase.java,
+                    org/slf4j/impl/**/*.java
+                  </excludes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
