@@ -52,6 +52,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   /**
    * @see LoggerFactoryBinder#getLoggerFactory()
    */
+  @Override
   public ILoggerFactory getLoggerFactory() {
     return this.loggerFactory;
   }
@@ -59,6 +60,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   /**
    * @see LoggerFactoryBinder#getLoggerFactoryClassStr()
    */
+  @Override
   public String getLoggerFactoryClassStr() {
     return this.loggerFactoryClassStr;
   }

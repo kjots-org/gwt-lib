@@ -91,6 +91,7 @@
     <maven.compiler.target>1.6</maven.compiler.target>
     
     <version.gwt>2.4.0</version.gwt>
+    <version.gin>1.5.0</version.gin>
     <version.slf4j>1.6.3</version.slf4j>
     <version.gwt-log>3.1.6</version.gwt-log>
     
@@ -121,6 +122,11 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>gin-support</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>signal-event</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -143,6 +149,11 @@
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt-user</artifactId>
         <version>${version.gwt}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.gwt.inject</groupId>
+        <artifactId>gin</artifactId>
+        <version>${version.gin}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -539,6 +550,7 @@
   </profiles>
   
   <modules>
+    <module>gin-support</module>
     <module>signal-event</module>
     <module>slf4j-support</module>
     <module>slf4j-gwt-log</module>
