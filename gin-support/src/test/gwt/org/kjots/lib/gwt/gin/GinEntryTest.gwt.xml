@@ -16,7 +16,7 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
-  org.kjots.lib.gwt.gin.GinSupport
+  org.kjots.lib.gwt.gin.GinEntryTest
   
   Created: 25th November 2011.
   
@@ -24,7 +24,9 @@
   @since 1.0
 -->
 <module>
-  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="org.kjots.lib.gwt.gin.GinEntry"/>
   
-  <inherits name="com.google.gwt.inject.Inject"/>
+ <replace-with class="org.kjots.lib.gwt.gin.client.entry.EntryGinModuleTest.TestEntryGinjectorFactory">
+    <when-type-is class="org.kjots.lib.gwt.gin.client.entry.EntryGinjectorFactory"/>
+  </replace-with>
 </module>
