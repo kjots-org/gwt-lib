@@ -41,9 +41,7 @@ public abstract class EntryGinModule extends AbstractGinModule {
       EntryGinjector entryGinjector = entryGinjectorFactory.createEntryGinjector();
       EntryPoint entryPoint = entryGinjector.getEntryPoint();
       
-      entryPoint.ginjector = entryGinjector;
-      
-      entryPoint.onModuleLoad();
+      entryPoint.onModuleLoad(entryGinjector);
     }
   }
 }

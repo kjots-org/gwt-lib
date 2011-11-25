@@ -23,7 +23,11 @@ package org.kjots.lib.gwt.gin.client.entry;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public abstract class EntryPoint<G extends EntryGinjector> implements com.google.gwt.core.client.EntryPoint {
-  /** The ginjector. */
-  protected G ginjector;
+public interface EntryPoint<G extends EntryGinjector> {
+  /**
+   * Receive notification that the module has been loaded.
+   *
+   * @param ginjector The ginjector.
+   */
+  public void onModuleLoad(G ginjector);
 }

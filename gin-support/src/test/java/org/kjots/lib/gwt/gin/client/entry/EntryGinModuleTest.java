@@ -78,16 +78,22 @@ public class EntryGinModuleTest extends GinEntryGwtTestBase {
   /**
    * Test Entry Point.
    */
-  public static class TestEntryPoint extends EntryPoint<TestEntryGinjector> {
+  public static class TestEntryPoint implements EntryPoint<TestEntryGinjector> {
     /** The onModuleLoad() invoked flag. */
     private boolean onModuleLoadInvoked = false;
     
+    /** The ginjector. */
+    private TestEntryGinjector ginjector = null;
+    
     /**
      * Receive notification that the module has been loaded.
+     *
+     * @param ginjector The ginjector.
      */
     @Override
-    public void onModuleLoad() {
-      onModuleLoadInvoked = true;
+    public void onModuleLoad(TestEntryGinjector ginjector) {
+      this.onModuleLoadInvoked = true;
+      this.ginjector = ginjector;
     }
   }
   
