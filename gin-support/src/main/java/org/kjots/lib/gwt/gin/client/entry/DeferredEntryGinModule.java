@@ -15,6 +15,8 @@
  */
 package org.kjots.lib.gwt.gin.client.entry;
 
+import javax.inject.Provider;
+
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.inject.Provides;
@@ -31,19 +33,19 @@ public abstract class DeferredEntryGinModule extends EntryGinModule {
   /**
    * Provide the entry point.
    *
-   * @param deferredEntryPoint The deferred entry point.
+   * @param deferredEntryPointProvider The deferred entry point provider.
    * @return The entry point.
    */
   @Provides
   @SuppressWarnings({ "rawtypes", "unchecked" })
-  protected final EntryPoint provideEntryPoint(final DeferredEntryPoint deferredEntryPoint) {
+  protected final EntryPoint provideEntryPoint(final Provider<DeferredEntryPoint> deferredEntryPointProvider) {
     return new EntryPoint() {
       @Override
       public void onModuleLoad(final EntryGinjector ginjector) {
         Scheduler.get().scheduleDeferred(new ScheduledCommand() {
           @Override
           public void execute() {
-            deferredEntryPoint.onModuleLoad(ginjector);
+            deferredEntryPointProvider.get().onModuleLoad(ginjector);
           }
         });
       }
