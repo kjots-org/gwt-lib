@@ -16,7 +16,9 @@
 package org.kjots.lib.gwt.client.slf4j;
 
 import org.slf4j.Logger;
+import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
+import org.slf4j.helpers.MessageFormatter;
 
 import com.allen_sauer.gwt.log.client.Log;
 
@@ -54,13 +56,17 @@ public class GwtLogLogger extends MarkerIgnoringBase {
   public void trace(String msg) {
     Log.trace(this.name, msg);
   }
-
+  
   /**
    * @see Logger#trace(String, Object)
    */
   @Override
   public void trace(String format, Object arg) {
-    Log.trace(this.name, format(format, arg));
+    if (Log.isTraceEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg);
+    
+      Log.trace(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -68,7 +74,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String format, Object arg1, Object arg2) {
-    Log.trace(this.name, format(format, arg1, arg2));
+    if (Log.isTraceEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg1, arg2);
+      
+      Log.trace(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -76,7 +86,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void trace(String format, Object[] argArray) {
-    Log.trace(this.name, format(format, argArray));
+    if (Log.isTraceEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.arrayFormat(format, argArray);
+      
+      Log.trace(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -108,7 +122,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object arg) {
-    Log.debug(this.name, format(format, arg));
+    if (Log.isDebugEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg);
+      
+      Log.debug(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -116,7 +134,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object arg1, Object arg2) {
-    Log.debug(this.name, format(format, arg1, arg2));
+    if (Log.isDebugEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg1, arg2);
+      
+      Log.debug(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -124,7 +146,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void debug(String format, Object[] argArray) {
-    Log.debug(this.name, format(format, argArray));
+    if (Log.isDebugEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.arrayFormat(format, argArray);
+      
+      Log.debug(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -156,7 +182,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object arg) {
-    Log.info(this.name, format(format, arg));
+    if (Log.isInfoEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg);
+      
+      Log.info(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -164,7 +194,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object arg1, Object arg2) {
-    Log.info(this.name, format(format, arg1, arg2));
+    if (Log.isInfoEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg1, arg2);
+      
+      Log.info(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -172,7 +206,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void info(String format, Object[] argArray) {
-    Log.info(this.name, format(format, argArray));
+    if (Log.isInfoEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.arrayFormat(format, argArray);
+      
+      Log.info(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -204,7 +242,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object arg) {
-    Log.warn(this.name, format(format, arg));
+    if (Log.isWarnEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg);
+      
+      Log.warn(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -212,7 +254,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object arg1, Object arg2) {
-    Log.warn(this.name, format(format, arg1, arg2));
+    if (Log.isWarnEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg1, arg2);
+      
+      Log.warn(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -220,7 +266,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void warn(String format, Object[] argArray) {
-    Log.warn(this.name, format(format, argArray));
+    if (Log.isWarnEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.arrayFormat(format, argArray);
+      
+      Log.warn(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -252,7 +302,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object arg) {
-    Log.error(this.name, format(format, arg));
+    if (Log.isErrorEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg);
+      
+      Log.error(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -260,7 +314,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object arg1, Object arg2) {
-    Log.error(this.name, format(format, arg1, arg2));
+    if (Log.isErrorEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.format(format, arg1, arg2);
+      
+      Log.error(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -268,7 +326,11 @@ public class GwtLogLogger extends MarkerIgnoringBase {
    */
   @Override
   public void error(String format, Object[] argArray) {
-    Log.error(this.name, format(format, argArray));
+    if (Log.isErrorEnabled()) {
+      FormattingTuple formattingTuple = MessageFormatter.arrayFormat(format, argArray);
+      
+      Log.error(this.name, formattingTuple.getMessage(), formattingTuple.getThrowable());
+    }
   }
 
   /**
@@ -277,16 +339,5 @@ public class GwtLogLogger extends MarkerIgnoringBase {
   @Override
   public void error(String msg, Throwable t) {
     Log.error(this.name, msg, t);
-  }
-  
-  /**
-   * Format the given string with the given arguments.
-   *
-   * @param format The string.
-   * @param args The arguments.
-   * @return The formatted string.
-   */
-  private String format(String format, Object... args) {
-    throw new UnsupportedOperationException();
   }
 }
