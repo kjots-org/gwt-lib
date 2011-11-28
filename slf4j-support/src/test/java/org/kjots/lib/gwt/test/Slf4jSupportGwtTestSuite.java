@@ -15,10 +15,11 @@
  */
 package org.kjots.lib.gwt.test;
 
-import org.kjots.lib.gwt.client.slf4j.MockLoggerFactoryGwtTest;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+import org.kjots.lib.gwt.client.slf4j.LoggerFactoryGwtTest;
+import org.kjots.lib.gwt.client.slf4j.MarkerFactoryGwtTest;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
 
@@ -50,7 +51,8 @@ public class Slf4jSupportGwtTestSuite extends GWTTestSuite {
    * @param suite The test suite.
    */
   public static void addTestSuites(TestSuite suite) {
-    suite.addTestSuite(MockLoggerFactoryGwtTest.class);
+    suite.addTestSuite(LoggerFactoryGwtTest.class);
+    suite.addTestSuite(MarkerFactoryGwtTest.class);
   }
   
   /**

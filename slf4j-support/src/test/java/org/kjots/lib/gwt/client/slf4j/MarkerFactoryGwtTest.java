@@ -15,37 +15,28 @@
  */
 package org.kjots.lib.gwt.client.slf4j;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.MarkerFactory;
 
 /**
- * Mock Logger Factory GWT Test.
+ * Marker Factory GWT Test.
  * <p>
- * Created: 13th November 2011.
+ * Created: 28th November 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class MockLoggerFactoryGwtTest extends Slf4jSupportGwtTestBase {
+public class MarkerFactoryGwtTest extends Slf4jSupportGwtTestBase {
   /**
-   * Test the retrieval of a logger by name.
+   * Test the retrieval of a marker.
    */
-  public void testGetLoggerByName() {
-    Logger logger = LoggerFactory.getLogger("loggerName");
-    
-    assertNotNull(logger);
-    assertTrue(logger instanceof MockLogger);
-    assertEquals("loggerName", logger.getName());
+  public void testGetMarker() {
+    assertNotNull(MarkerFactory.getMarker("markerName"));
   }
   
   /**
-   * Test the retrieval of a logger by class.
+   * Test the retrieval of a detached marker.
    */
-  public void testGetLoggerByClass() {
-    Logger logger = LoggerFactory.getLogger(Object.class);
-    
-    assertNotNull(logger);
-    assertTrue(logger instanceof MockLogger);
-    assertEquals(Object.class.getName(), logger.getName());
+  public void testGetDetachedMarker() {
+    assertNotNull(MarkerFactory.getDetachedMarker("detachedMarkerName"));
   }
 }

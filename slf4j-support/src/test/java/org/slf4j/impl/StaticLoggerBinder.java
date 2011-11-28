@@ -15,8 +15,8 @@
  */
 package org.slf4j.impl;
 
-import org.kjots.lib.gwt.client.slf4j.MockLoggerFactory;
 import org.slf4j.ILoggerFactory;
+import org.slf4j.helpers.NOPLoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
 
 /**
@@ -35,10 +35,10 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
   
   /** The logger factory. */
-  private final ILoggerFactory loggerFactory = new MockLoggerFactory();
+  private final ILoggerFactory loggerFactory = new NOPLoggerFactory();
   
   /** The logger factory class string. */
-  private final String loggerFactoryClassStr = MockLoggerFactory.class.getName();
+  private final String loggerFactoryClassStr = NOPLoggerFactory.class.getName();
   
   /**
    * Retrieve the singleton instance of this class.
