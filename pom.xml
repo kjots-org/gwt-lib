@@ -249,6 +249,9 @@
       <resource>
         <directory>src/main/java</directory>
       </resource>
+      <resource>
+        <directory>${project.build.directory}/generated-sources/gwt</directory>
+      </resource>
     </resources>
     
     <testResources>
@@ -414,7 +417,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore/>
+                    <execute/>
                   </action>
                 </pluginExecution>
                 

@@ -50,14 +50,14 @@
             <goals>
               <goal>unpack</goal>
             </goals>
-            <phase>process-resources</phase>
+            <phase>generate-resources</phase>
             <configuration>
               <artifactItems>
                 <artifactItem>
                   <groupId>org.slf4j</groupId>
                   <artifactId>slf4j-api</artifactId>
                   <classifier>sources</classifier>
-                  <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                  <outputDirectory>${project.build.directory}/generated-sources/gwt</outputDirectory>
                   <includes>org/slf4j/**/*.java</includes>
                   <excludes>
                     org/slf4j/LoggerFactory.java,
