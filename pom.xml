@@ -554,6 +554,7 @@
   
   <modules>
     <module>gin-support</module>
+    <module>message-event</module>
     <module>signal-event</module>
     <module>slf4j-support</module>
     <module>slf4j-gwt-log</module>
