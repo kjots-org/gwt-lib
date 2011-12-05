@@ -28,7 +28,7 @@ import com.google.gwt.event.shared.EventBus
 import com.google.gwt.event.shared.GwtEvent
 
 /**
- * Signal Specification.
+ * Signal Event Specification.
  * <p>
  * Created: 16th November 2011.
  *
@@ -36,13 +36,13 @@ import com.google.gwt.event.shared.GwtEvent
  * @since 1.0
  */
 @RunWith(classOf[JUnitRunner])
-class SignalSpec extends Spec
+class SignalEventSpec extends Spec
   with GivenWhenThen
   with MustMatchers
   with MockitoSugar {
   
-  describe("A Signal") {
-    it("should fire a SignalEvent when raised on an EventBus") {
+  describe("A SignalEvent") {
+    it("should be fired on an EventBus when a Signal is raised") {
       given("a Signal and an EventBus")
       val signal = new Signal("TestSignal")
       val eventBus = mock[EventBus]

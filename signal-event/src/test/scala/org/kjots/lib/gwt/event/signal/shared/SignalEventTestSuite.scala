@@ -29,6 +29,6 @@ import org.junit.runners.Suite.SuiteClasses
  */
 @RunWith(classOf[Suite])
 @SuiteClasses(Array(
-  classOf[SignalSpec]
+  classOf[SignalEventSpec]
 ))
 class SignalEventTestSuite {}
