@@ -31,4 +31,29 @@
   
   <name>kjots.org GWT Library - Message Event</name>
   <description>kjots.org GWT Library - Message Event</description>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package:server</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <classifier>server</classifier>
+              <includes>
+                <include>org/kjots/lib/gwt/event/message/shared/**/*.class</include>
+                <include>org/kjots/lib/gwt/event/message/server/**/*.class</include>
+              </includes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
