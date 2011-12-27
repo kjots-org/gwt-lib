@@ -125,6 +125,11 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>app-support</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>gin-support</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -593,6 +598,7 @@
   </profiles>
   
   <modules>
+    <module>app-support</module>
     <module>gin-support</module>
     <module>message-event</module>
     <module>signal-event</module>
