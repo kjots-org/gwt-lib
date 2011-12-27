@@ -17,6 +17,7 @@ package org.kjots.lib.gwt.event.message.shared;
 
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;
+import com.google.web.bindery.event.shared.EventBus;
 
 /**
  * Message Event.
@@ -44,6 +45,19 @@ public class MessageEvent<T> extends GwtEvent<MessageHandler<T>> {
    * @param message The message.
    */
   public static <T> void fire(HasHandlers source, MessageType<T> messageType, T message) {
+    source.fireEvent(new MessageEvent<T>(messageType, message));
+  }
+  
+  /**
+   * Fire a message event for a message of the given type from the given
+   * source.
+   *
+   * @param <T> The type of the message.
+   * @param source The source of the message event.
+   * @param messageType The message type.
+   * @param message The message.
+   */
+  public static <T> void fire(EventBus source, MessageType<T> messageType, T message) {
     source.fireEvent(new MessageEvent<T>(messageType, message));
   }
   

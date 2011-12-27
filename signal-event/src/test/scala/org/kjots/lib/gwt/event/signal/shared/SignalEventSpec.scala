@@ -23,9 +23,8 @@ import org.scalatest.matchers.MustMatchers
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.GivenWhenThen
 import org.scalatest.Spec
-
-import com.google.gwt.event.shared.EventBus
 import com.google.gwt.event.shared.GwtEvent
+import com.google.web.bindery.event.shared.EventBus
 
 /**
  * Signal Event Specification.

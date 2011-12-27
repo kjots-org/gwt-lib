@@ -15,8 +15,8 @@
  */
 package org.kjots.lib.gwt.event.signal.shared;
 
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.web.bindery.event.shared.EventBus;
 
 /**
  * Signal.

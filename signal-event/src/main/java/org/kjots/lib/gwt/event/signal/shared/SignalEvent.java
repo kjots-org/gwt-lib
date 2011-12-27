@@ -17,6 +17,7 @@ package org.kjots.lib.gwt.event.signal.shared;
 
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;
+import com.google.web.bindery.event.shared.EventBus;
 
 /**
  * Signal.
@@ -38,6 +39,16 @@ public class SignalEvent extends GwtEvent<SignalHandler> {
    */
   public static void fire(HasHandlers source, Signal signal) {
     source.fireEvent(new SignalEvent(signal));
+  }
+  
+  /**
+   * Fire a signal event for the given signal from the given source.
+   *
+   * @param eventBus The event bus.
+   * @param signal The signal.
+   */
+  public static void fire(EventBus eventBus, Signal signal) {
+    eventBus.fireEvent(new SignalEvent(signal));
   }
   
   /**
