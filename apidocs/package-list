@@ -1,5 +1,0 @@
-org.kjots.lib.gwt.client.slf4j
-org.kjots.lib.gwt.event.message.shared
-org.kjots.lib.gwt.event.signal.shared
-org.kjots.lib.gwt.gin.client.entry
-org.slf4j.impl
