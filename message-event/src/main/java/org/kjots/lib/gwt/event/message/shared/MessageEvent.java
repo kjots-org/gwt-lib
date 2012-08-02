@@ -49,16 +49,30 @@ public class MessageEvent<T> extends GwtEvent<MessageHandler<T>> {
   }
   
   /**
-   * Fire a message event for a message of the given type from the given
-   * source.
+   * Fire a message event for a message of the given type on the given event
+   * bus.
    *
    * @param <T> The type of the message.
-   * @param source The source of the message event.
+   * @param source The event bus.
    * @param messageType The message type.
    * @param message The message.
    */
-  public static <T> void fire(EventBus source, MessageType<T> messageType, T message) {
-    source.fireEvent(new MessageEvent<T>(messageType, message));
+  public static <T> void fire(EventBus eventBus, MessageType<T> messageType, T message) {
+    eventBus.fireEvent(new MessageEvent<T>(messageType, message));
+  }
+  
+  /**
+   * Fire a message event for a message of the given type on the given event
+   * bus from the given source.
+   *
+   * @param <T> The type of the message.
+   * @param source The event bus.
+   * @param messageType The message type.
+   * @param message The message.
+   * @param source The source.
+   */
+  public static <T> void fire(EventBus eventBus, MessageType<T> messageType, T message, Object source) {
+    eventBus.fireEventFromSource(new MessageEvent<T>(messageType, message), source);
   }
   
   /**

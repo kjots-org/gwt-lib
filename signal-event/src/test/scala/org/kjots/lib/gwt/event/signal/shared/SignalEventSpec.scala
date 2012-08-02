@@ -16,6 +16,7 @@
 package org.kjots.lib.gwt.event.signal.shared
 
 import org.junit.runner.RunWith
+import org.mockito.Matchers.same
 import org.mockito.Mockito.verify
 import org.mockito.ArgumentCaptor
 import org.scalatest.junit.JUnitRunner
@@ -53,6 +54,26 @@ class SignalEventSpec extends Spec
       val argument = ArgumentCaptor.forClass(classOf[GwtEvent[_]])
       
       verify(eventBus).fireEvent(argument.capture())
+      
+      argument.getValue().isInstanceOf[SignalEvent] must be (true)
+      
+      and("the SignalEvent contains the Signal")
+      argument.getValue().asInstanceOf[SignalEvent].getSignal() must be theSameInstanceAs (signal)
+    }
+    
+    it("should be fired on an EventBus from a source when a Signal is raised from a source") {
+      given("a source, Signal and an EventBus")
+      val source = this
+      val signal = new Signal("TestSignal")
+      val eventBus = mock[EventBus]
+      
+      when("the Signal is raised on the EventBus from the source")
+      signal.raise(eventBus, source)
+      
+      then("a SignalEvent is fired on the EventBus from the source")
+      val argument = ArgumentCaptor.forClass(classOf[GwtEvent[_]])
+      
+      verify(eventBus).fireEventFromSource(argument.capture(), same(source))
       
       argument.getValue().isInstanceOf[SignalEvent] must be (true)
       

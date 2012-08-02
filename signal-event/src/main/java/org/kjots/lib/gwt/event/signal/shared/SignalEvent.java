@@ -42,13 +42,25 @@ public class SignalEvent extends GwtEvent<SignalHandler> {
   }
   
   /**
-   * Fire a signal event for the given signal from the given source.
+   * Fire a signal event for the given signal on the given event bus.
    *
    * @param eventBus The event bus.
    * @param signal The signal.
    */
   public static void fire(EventBus eventBus, Signal signal) {
     eventBus.fireEvent(new SignalEvent(signal));
+  }
+  
+  /**
+   * Fire a signal event for the given signal on the given event bus from the
+   * given source.
+   *
+   * @param eventBus The event bus.
+   * @param signal The signal.
+   * @param source The source.
+   */
+  public static void fire(EventBus eventBus, Signal signal, Object source) {
+    eventBus.fireEventFromSource(new SignalEvent(signal), source);
   }
   
   /**

@@ -60,6 +60,17 @@ public class MessageType<T> extends GwtEvent.Type<MessageHandler<T>> {
   }
   
   /**
+   * Send the given message over the given event bus from the given source.
+   *
+   * @param eventBus The event bus.
+   * @param message The message.
+   * @param source The source.
+   */
+  public void send(EventBus eventBus, T message, Object source) {
+    MessageEvent.fire(eventBus, this, message, source);
+  }
+  
+  /**
    * Create a string representation of this object.
    *
    * @return The string representation of this object.

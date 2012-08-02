@@ -58,6 +58,16 @@ public class Signal extends GwtEvent.Type<SignalHandler> {
   }
   
   /**
+   * Raise the signal on the given event hub from the given source.
+   *
+   * @param eventBus The event bus.
+   * @param source The source.
+   */
+  public void raise(EventBus eventBus, Object source) {
+    SignalEvent.fire(eventBus, this, source);
+  }
+  
+  /**
    * Create a string representation of this object.
    *
    * @return The string representation of this object.

@@ -16,6 +16,7 @@
 package org.kjots.lib.gwt.event.message.shared
 
 import org.junit.runner.RunWith
+import org.mockito.Matchers.same
 import org.mockito.Mockito.verify
 import org.mockito.ArgumentCaptor
 import org.scalatest.junit.JUnitRunner
@@ -54,6 +55,30 @@ class MessageEventSpec extends Spec
       val argument = ArgumentCaptor.forClass(classOf[GwtEvent[_]])
 
       verify(eventBus).fireEvent(argument.capture())
+
+      argument.getValue().isInstanceOf[MessageEvent[_]] must be (true)
+
+      and("the MessageEvent contains the MessageType")
+      argument.getValue().asInstanceOf[MessageEvent[String]].getMessageType() must be theSameInstanceAs (messageType)
+
+      and("the MessageEvent contains the message")
+      argument.getValue().asInstanceOf[MessageEvent[String]].getMessage() must be theSameInstanceAs (message)
+    }
+    
+    it("should be fired on an EventBus from a source when a message is sent from a source") {
+      given("a source, MessageType, a message and an EventBus")
+      val source = this
+      val messageType = new MessageType[String]("TestMessageType")
+      val message = "Test Message"
+      val eventBus = mock[EventBus]
+
+      when("the message is sent on the EventBus from the source")
+      messageType.send(eventBus, message, source);
+
+      then("a MessageEvent is fired on the EventBus from the source")
+      val argument = ArgumentCaptor.forClass(classOf[GwtEvent[_]])
+
+      verify(eventBus).fireEventFromSource(argument.capture(), same(source))
 
       argument.getValue().isInstanceOf[MessageEvent[_]] must be (true)
 
