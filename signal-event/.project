@@ -3,7 +3,6 @@
 	<name>org.kjots.gwt-lib.signal-event</name>
 	<comment></comment>
   <projects>
-    <project>org.kjots.gwt-lib</project>
   </projects>
   <buildSpec>
     <buildCommand>

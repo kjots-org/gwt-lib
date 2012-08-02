@@ -3,7 +3,6 @@
 	<name>org.kjots.gwt-lib.slf4j-gwt-log</name>
 	<comment></comment>
   <projects>
-    <project>org.kjots.gwt-lib.slf4j-support</project>
   </projects>
   <buildSpec>
     <buildCommand>
