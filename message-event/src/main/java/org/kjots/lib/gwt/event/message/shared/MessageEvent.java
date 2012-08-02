@@ -53,7 +53,7 @@ public class MessageEvent<T> extends GwtEvent<MessageHandler<T>> {
    * bus.
    *
    * @param <T> The type of the message.
-   * @param source The event bus.
+   * @param eventBus The event bus.
    * @param messageType The message type.
    * @param message The message.
    */
@@ -66,7 +66,7 @@ public class MessageEvent<T> extends GwtEvent<MessageHandler<T>> {
    * bus from the given source.
    *
    * @param <T> The type of the message.
-   * @param source The event bus.
+   * @param eventBus The event bus.
    * @param messageType The message type.
    * @param message The message.
    * @param source The source.
