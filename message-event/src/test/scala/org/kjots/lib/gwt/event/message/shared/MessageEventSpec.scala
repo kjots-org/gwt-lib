@@ -39,27 +39,27 @@ class MessageEventSpec extends Spec
   with GivenWhenThen
   with MustMatchers
   with MockitoSugar {
-  
+
   describe("A MessageEvent") {
     it("should be fired on an EventBus when a message is sent") {
       given("a MessageType, a message and an EventBus")
       val messageType = new MessageType[String]("TestMessageType")
       val message = "Test Message"
       val eventBus = mock[EventBus]
-      
+
       when("the message is sent on the EventBus")
       messageType.send(eventBus, message);
-      
+
       then("a MessageEvent is fired on the EventBus")
       val argument = ArgumentCaptor.forClass(classOf[GwtEvent[_]])
-      
+
       verify(eventBus).fireEvent(argument.capture())
-      
-      argument.getValue().isInstanceOf[MessageEvent[String]] must be (true)
-      
+
+      argument.getValue().isInstanceOf[MessageEvent[_]] must be (true)
+
       and("the MessageEvent contains the MessageType")
       argument.getValue().asInstanceOf[MessageEvent[String]].getMessageType() must be theSameInstanceAs (messageType)
-      
+
       and("the MessageEvent contains the message")
       argument.getValue().asInstanceOf[MessageEvent[String]].getMessage() must be theSameInstanceAs (message)
     }
