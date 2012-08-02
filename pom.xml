@@ -21,7 +21,7 @@
   
   <groupId>org.kjots.gwt-lib</groupId>
   <artifactId>org.kjots.gwt-lib</artifactId>
-  <version>1.0.1</version>
+  <version>1.1-SNAPSHOT</version>
   
   <packaging>pom</packaging>
   
