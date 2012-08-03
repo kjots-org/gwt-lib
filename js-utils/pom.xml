@@ -25,7 +25,7 @@
     <version>1.1-SNAPSHOT</version>
   </parent>
   
-  <artifactId>js-util</artifactId>
+  <artifactId>js-utils</artifactId>
   
   <packaging>jar</packaging>
   
