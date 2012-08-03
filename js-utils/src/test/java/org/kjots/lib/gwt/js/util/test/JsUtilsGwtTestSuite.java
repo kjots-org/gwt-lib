@@ -6,6 +6,8 @@ package org.kjots.lib.gwt.js.util.test;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.kjots.lib.gwt.js.util.client.JsAnyGwtTest;
+
 import com.google.gwt.junit.tools.GWTTestSuite;
 
 /**
@@ -36,6 +38,7 @@ public class JsUtilsGwtTestSuite extends GWTTestSuite {
    * @param suite The test suite.
    */
   public static void addTestSuites(TestSuite suite) {
+    suite.addTestSuite(JsAnyGwtTest.class);
   }
   
   /**
