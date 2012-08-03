@@ -618,6 +618,7 @@
   <modules>
     <module>app-support</module>
     <module>gin-support</module>
+    <module>js-utils</module>
     <module>message-event</module>
     <module>signal-event</module>
     <module>slf4j-support</module>
