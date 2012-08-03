@@ -233,11 +233,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-library</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${version.scala}</artifactId>
       <scope>test</scope>
@@ -572,6 +567,29 @@
   </reporting>
   
   <profiles>
+    <profile>
+      <id>eclipse-application</id>
+      <activation>
+        <property>
+          <name>eclipse.application</name>
+        </property>
+      </activation>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${version.scala}</artifactId>
+            <version>${version.scalatest}</version>
+            <exclusions>
+              <exclusion>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+    </profile>
     <profile>
       <id>sign</id>
       <build>
