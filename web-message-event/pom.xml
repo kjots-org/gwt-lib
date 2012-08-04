@@ -31,4 +31,11 @@
   
   <name>kjots.org GWT Library - Web Message Event</name>
   <description>kjots.org GWT Library - Web Message Event</description>
+  
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>js-utils</artifactId>
+    </dependency>
+  </dependencies>
 </project>
