@@ -18,7 +18,6 @@ public interface WebMessageHandler extends EventHandler {
    * Receive notification that a web message has been received.
    * 
    * @param webMessageEvent The web message event.
-   * @param message The message.
    */
   public void onWebMessage(WebMessageEvent webMessageEvent);
 }
