@@ -82,13 +82,13 @@ class JsAnyFixtures {
   }-*/;
   
   /**
-   * Retrieve the result of the given <code>toString</code> method of the value
-   * of the given JS Any.
+   * Retrieve the result of the <code>toString</code> method of the value of
+   * the given JS Any.
    *
    * @param any The JS Any.
    * @return The value string.
    */
-  static native String valueToString(JsAny<?> any) /*-{
+  static native String valueString(JsAny<?> any) /*-{
     return any.value.toString();
   }-*/;
   

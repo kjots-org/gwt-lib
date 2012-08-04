@@ -16,7 +16,7 @@ import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringJsAny;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringObjectJsAny;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringValue;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.undefinedJsAny;
-import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.valueToString;
+import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.valueString;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -373,21 +373,21 @@ public class JsAnyGwtTest extends JsUtilsGwtTestBase {
   }
   
   /**
-   * Test {@link JsAny#valueToString}.
+   * Test {@link JsAny#valueString}.
    * <p>
-   * {@link JsAny#valueToString} should return <code>"undefined"</code> if the
+   * {@link JsAny#valueString} should return <code>"undefined"</code> if the
    * value is undefined, <code>"null"</code> if the value is null, and the
    * result of the <code>toString</code> of the value for all other values.
    */
-  public void testValueToString() {
-    assertEquals("undefined", undefinedJsAny.valueToString());
-    assertEquals("null", nullJsAny.valueToString());
-    assertEquals(valueToString(booleanJsAny), booleanJsAny.valueToString());
-    assertEquals(valueToString(numberJsAny), numberJsAny.valueToString());
-    assertEquals(valueToString(stringJsAny), stringJsAny.valueToString());
-    assertEquals(valueToString(stringObjectJsAny), stringObjectJsAny.valueToString());
-    assertEquals(valueToString(objectJsAny), objectJsAny.valueToString());
-    assertEquals(valueToString(arrayJsAny), arrayJsAny.valueToString());
-    assertEquals(valueToString(functionJsAny), functionJsAny.valueToString());
+  public void testValueString() {
+    assertEquals("undefined", undefinedJsAny.valueString());
+    assertEquals("null", nullJsAny.valueString());
+    assertEquals(valueString(booleanJsAny), booleanJsAny.valueString());
+    assertEquals(valueString(numberJsAny), numberJsAny.valueString());
+    assertEquals(valueString(stringJsAny), stringJsAny.valueString());
+    assertEquals(valueString(stringObjectJsAny), stringObjectJsAny.valueString());
+    assertEquals(valueString(objectJsAny), objectJsAny.valueString());
+    assertEquals(valueString(arrayJsAny), arrayJsAny.valueString());
+    assertEquals(valueString(functionJsAny), functionJsAny.valueString());
   }
 }

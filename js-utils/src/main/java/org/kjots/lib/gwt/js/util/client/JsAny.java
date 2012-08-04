@@ -241,7 +241,7 @@ public class JsAny<T> extends JavaScriptObject {
    * 
    * @return The value string.
    */
-  public final native String valueToString() /*-{
+  public final native String valueString() /*-{
     if (typeof this.value === "undefined") {
       return "undefined";
     }
