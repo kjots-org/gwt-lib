@@ -140,6 +140,11 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>message-event</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>signal-event</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -156,6 +161,11 @@
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>uri-emul</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>web-message-event</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -629,5 +639,6 @@
     <module>slf4j-support</module>
     <module>slf4j-gwt-log</module>
     <module>uri-emul</module>
+    <module>web-message-event</module>
   </modules>
 </project>
