@@ -16,6 +16,7 @@ import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringJsAny;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringObjectJsAny;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.stringValue;
 import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.undefinedJsAny;
+import static org.kjots.lib.gwt.js.util.client.JsAnyFixtures.valueToString;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -369,5 +370,24 @@ public class JsAnyGwtTest extends JsUtilsGwtTestBase {
     assertSame(objectJsAny, objectJsAny.asObjectJsAny());
     assertSame(arrayJsAny, arrayJsAny.asObjectJsAny());
     assertSame(functionJsAny, functionJsAny.asObjectJsAny());
+  }
+  
+  /**
+   * Test {@link JsAny#valueToString}.
+   * <p>
+   * {@link JsAny#valueToString} should return <code>"undefined"</code> if the
+   * value is undefined, <code>"null"</code> if the value is null, and the
+   * result of the <code>toString</code> of the value for all other values.
+   */
+  public void testValueToString() {
+    assertEquals("undefined", undefinedJsAny.valueToString());
+    assertEquals("null", nullJsAny.valueToString());
+    assertEquals(valueToString(booleanJsAny), booleanJsAny.valueToString());
+    assertEquals(valueToString(numberJsAny), numberJsAny.valueToString());
+    assertEquals(valueToString(stringJsAny), stringJsAny.valueToString());
+    assertEquals(valueToString(stringObjectJsAny), stringObjectJsAny.valueToString());
+    assertEquals(valueToString(objectJsAny), objectJsAny.valueToString());
+    assertEquals(valueToString(arrayJsAny), arrayJsAny.valueToString());
+    assertEquals(valueToString(functionJsAny), functionJsAny.valueToString());
   }
 }

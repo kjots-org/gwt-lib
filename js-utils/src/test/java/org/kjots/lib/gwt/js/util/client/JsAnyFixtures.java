@@ -82,6 +82,17 @@ class JsAnyFixtures {
   }-*/;
   
   /**
+   * Retrieve the result of the given <code>toString</code> method of the value
+   * of the given JS Any.
+   *
+   * @param any The JS Any.
+   * @return The value string.
+   */
+  static native String valueToString(JsAny<?> any) /*-{
+    return any.value.toString();
+  }-*/;
+  
+  /**
    * Create a JS Any with an undefined value.
    *
    * @return The undefined JS Any.

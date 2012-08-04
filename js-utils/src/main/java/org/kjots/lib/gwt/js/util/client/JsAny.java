@@ -234,6 +234,26 @@ public class JsAny<T> extends JavaScriptObject {
   }
   
   /**
+   * Retrieve the result of the <code>toString</code> method of the value.
+   * <p>
+   * This method will return <code>"undefined"</code> if the value is not
+   * defined and <code>"null"</code> if the value is <code>null</code>.
+   * 
+   * @return The value string.
+   */
+  public final native String valueToString() /*-{
+    if (typeof this.value === "undefined") {
+      return "undefined";
+    }
+    else if (this.value === null) {
+      return "null";
+    }
+    else {
+      return this.value.toString();
+    }
+  }-*/;
+  
+  /**
    * Construct a new JS Any.
    */
   protected JsAny() {
