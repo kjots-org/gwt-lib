@@ -7,6 +7,8 @@ import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageUtil;
+import org.kjots.lib.gwt.event.webMessage.client.request.RequestManager;
+import org.kjots.lib.gwt.event.webMessage.client.request.ResponseHandler;
 import org.kjots.lib.gwt.js.util.client.JsAny;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -28,6 +30,9 @@ import com.google.gwt.user.client.ui.RootPanel;
  * @see com.google.gwt.user.client.ui.Frame
  */
 public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWebMessageHandlers {
+  /** The request manager. */
+  private final RequestManager requestManager = new RequestManager(this);
+  
   /**
    * @see com.google.gwt.user.client.ui.Frame#wrap(Element)
    */
@@ -120,6 +125,50 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
    */
   public void postMessage(JavaScriptObject message, String targetOrigin, JavaScriptObject... transfer) {
     WebMessageUtil.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
+  }
+  
+  /**
+   * Post the given request with the given target origin.
+   *
+   * @param request The request.
+   * @param targetOrigin The target origin.
+   * @param responseHandler The response handler.
+   */
+  public void postRequest(Boolean request, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  }
+  
+  /**
+   * Post the given request with the given target origin.
+   *
+   * @param request The request.
+   * @param targetOrigin The target origin.
+   * @param responseHandler The response handler.
+   */
+  public void postRequest(Number request, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  }
+  
+  /**
+   * Post the given request with the given target origin.
+   *
+   * @param request The request.
+   * @param targetOrigin The target origin.
+   * @param responseHandler The response handler.
+   */
+  public void postRequest(String request, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  }
+  
+  /**
+   * Post the given request with the given target origin.
+   *
+   * @param request The request.
+   * @param targetOrigin The target origin.
+   * @param responseHandler The response handler.
+   */
+  public void postRequest(JavaScriptObject request, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
   }
   
   /**
