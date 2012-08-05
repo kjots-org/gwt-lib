@@ -1,0 +1,15 @@
+org.kjots.lib.gwt.app.client.activity
+org.kjots.lib.gwt.app.client.entry
+org.kjots.lib.gwt.app.client.gin
+org.kjots.lib.gwt.app.client.place
+org.kjots.lib.gwt.app.client.signal
+org.kjots.lib.gwt.client.slf4j
+org.kjots.lib.gwt.event.message.shared
+org.kjots.lib.gwt.event.signal.shared
+org.kjots.lib.gwt.event.webMessage.client
+org.kjots.lib.gwt.event.webMessage.client.dom
+org.kjots.lib.gwt.event.webMessage.client.request
+org.kjots.lib.gwt.event.webMessage.client.ui
+org.kjots.lib.gwt.gin.client.entry
+org.kjots.lib.gwt.js.util.client
+org.slf4j.impl
