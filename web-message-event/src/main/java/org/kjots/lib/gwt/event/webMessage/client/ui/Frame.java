@@ -57,7 +57,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame() {
     super();
     
-    WebMessageEvent.bridge(this);
+    WebMessageUtil.bridge(this);
   }
 
   /**
@@ -69,7 +69,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame(String url) {
     super(url);
     
-    WebMessageEvent.bridge(this);
+    WebMessageUtil.bridge(this);
   }
   
   /**
@@ -184,7 +184,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   protected Frame(Element element) {
     super(element);
     
-    WebMessageEvent.bridge(this);
+    WebMessageUtil.bridge(this);
   }
   
   /**

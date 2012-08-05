@@ -40,6 +40,8 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
   @UiConstructor
   public NamedFrame(String name) {
     super(name);
+    
+    WebMessageUtil.bridge(this);
   }
   
   /**
