@@ -17,7 +17,7 @@ import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.user.client.ui.Frame;
 
 /**
- * Web Message Util.
+ * Web Message.
  * <p>
  * Created: 4th August 2012.
  *
@@ -25,6 +25,30 @@ import com.google.gwt.user.client.ui.Frame;
  * @since 1.1
  */
 public class WebMessage {
+  /**
+   * Web Message Entry Point.
+   * <p>
+   * Created: 5th August 2012.
+   */
+  public static class EntryPoint implements com.google.gwt.core.client.EntryPoint {
+    /**
+     * Retrieve the log message event handler.
+     *
+     * @return The log message event handler.
+     */
+    private static native JavaScriptObject getLogMessageEventHandler() /*-{
+      return @org.kjots.lib.gwt.event.webMessage.client.WebMessage::logMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;);
+    }-*/;
+    
+    /**
+     * Receive notification that this module has been loaded.
+     */
+    @Override
+    public void onModuleLoad() {
+      addMessageEventListener(getLogMessageEventHandler());
+    }
+  }
+  
   /** The logger for this class. */
   private static final Logger logger = LoggerFactory.getLogger(WebMessage.class);
   
@@ -98,10 +122,10 @@ public class WebMessage {
         if (attachEvent.isAttached()) {
           this.messageEventListener = createMessageEventHandler(frame, frame.getElement());
           
-          WebMessage.addMessageEventListener(this.messageEventListener);
+          addMessageEventListener(this.messageEventListener);
         }
         else {
-          WebMessage.removeMessageEventListener(this.messageEventListener);
+          removeMessageEventListener(this.messageEventListener);
           
           this.messageEventListener = null;
         }
@@ -109,8 +133,6 @@ public class WebMessage {
       
       private native JavaScriptObject createMessageEventHandler(HasHandlers source, Element element) /*-{
         return function(messageEvent) {
-          @org.kjots.lib.gwt.event.webMessage.client.WebMessage::logMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(messageEvent);
-          
           if (messageEvent.source === element.contentWindow) {
             @org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent::fire(Lcom/google/gwt/event/shared/HasHandlers;Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(source, messageEvent);
           }
@@ -145,7 +167,7 @@ public class WebMessage {
    */
   static void logMessageEvent(MessageEvent messageEvent) {
     if (logger.isDebugEnabled()) {
-      logger.debug("Message event received: data={}, origin={}, lastEventId={}, source={}", new Object[] {
+      logger.debug("Message received: data={}, origin={}, lastEventId={}, source={}", new Object[] {
         JSON.stringify(messageEvent.getData()),
         messageEvent.getOrigin(),
         messageEvent.getLastEventId(),
