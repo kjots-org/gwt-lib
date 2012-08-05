@@ -4,7 +4,10 @@
 package org.kjots.lib.gwt.event.webMessage.client;
 
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
+import org.kjots.lib.gwt.js.util.client.JSON;
 import org.kjots.lib.gwt.js.util.client.JsAny;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -29,6 +32,12 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
       return "WebMessageEvent";
     }
   };
+  
+  /** The logger for this class. */
+  private static final Logger logger = LoggerFactory.getLogger(WebMessageEvent.class);
+  {
+    LoggerFactory.getLogger(WebMessageEvent.class);
+  }
   
   /** The message event. */
   private final MessageEvent messageEvent;
@@ -58,6 +67,8 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
       
       private native JavaScriptObject createMessageEventHandler(HasHandlers source, Element element) /*-{
         return function(messageEvent) {
+          @org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent::logMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(messageEvent);
+          
           if (messageEvent.source === element.contentWindow) {
             @org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent::fire(Lcom/google/gwt/event/shared/HasHandlers;Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(source, messageEvent);
           }
@@ -94,6 +105,32 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
     $wnd.removeEventListener("message", messageEventListener, false);
   }-*/;
 
+  /**
+   * Log the given message event.
+   *
+   * @param messageEvent The message event.
+   */
+  private static void logMessageEvent(MessageEvent messageEvent) {
+    if (logger.isDebugEnabled()) {
+      logger.debug("Message event received: data={}, origin={}, lastEventId={}, source={}", new Object[] {
+        JSON.stringify(messageEvent.getData()),
+        messageEvent.getOrigin(),
+        messageEvent.getLastEventId(),
+        getWindowUrl(messageEvent.getSource())
+      });
+    }
+  }
+  
+  /**
+   * Retrieve the URL of the given window object.
+   *
+   * @param window The window object.
+   * @return The URL.
+   */
+  private static native String getWindowUrl(JavaScriptObject window) /*-{
+    return window.location.href;
+  }-*/;
+  
   /**
    * Retrieve the type of the event.
    *

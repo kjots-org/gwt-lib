@@ -35,6 +35,10 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>slf4j-support</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>js-utils</artifactId>
     </dependency>
   </dependencies>
