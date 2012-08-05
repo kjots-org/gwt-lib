@@ -17,19 +17,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Request extends JavaScriptObject {
   /**
-   * Create a new request with the given data.
-   *
-   * @param data The data.
-   * @return The request.
-   */
-  public static native Request create(JsAny<?> data) /*-{
-    return { 
-      "$request" : @org.kjots.lib.gwt.event.webMessage.client.request.RequestManager::getNextRequestId()(),
-      "data" : data.value
-    };
-  }-*/;
-  
-  /**
    * Determine if the given object is a request.
    *
    * @param object The object.
@@ -50,21 +37,21 @@ public class Request extends JavaScriptObject {
   }-*/;
 
   /**
-   * Retrieve the data.
+   * Retrieve the name of the request.
    *
-   * @return The data.
+   * @return The name of the request.
    */
-  public final native JsAny<?> getData() /*-{
-    return { "value" : this.data };
+  public final native String getName() /*-{
+    return this.name;
   }-*/;
   
   /**
-   * Retrieve the request ID.
+   * Retrieve the request data.
    *
-   * @return The request ID.
+   * @return The request data.
    */
-  protected final native String getRequestId() /*-{
-    return this["$request"];
+  public final native JsAny<?> getData() /*-{
+    return { "value" : this.data };
   }-*/;
   
   /**

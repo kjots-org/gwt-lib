@@ -17,10 +17,10 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Response extends JavaScriptObject {
   /**
-   * Create a new response for the given request and the given data.
+   * Create a new response for the given request with the given data.
    *
    * @param request The request.
-   * @param data The data.
+   * @param data The response data.
    * @return The response.
    */
   public static native Request create(Request request, JsAny<?> data) /*-{
@@ -51,21 +51,12 @@ public class Response extends JavaScriptObject {
   }-*/;
   
   /**
-   * Retrieve the data.
+   * Retrieve the response data.
    *
-   * @return The data.
+   * @return The response data.
    */
   public final native JsAny<?> getData() /*-{
     return { "value" : this.data };
-  }-*/;
-  
-  /**
-   * Retrieve the request ID.
-   *
-   * @return The request ID.
-   */
-  protected final native String getRequestId() /*-{
-    return this["$response"];
   }-*/;
   
   /**

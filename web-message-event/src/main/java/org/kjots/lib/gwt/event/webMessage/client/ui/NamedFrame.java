@@ -98,47 +98,51 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
   }
   
   /**
-   * Post the given request with the given target origin.
+   * Post a request with the given name and data and target origin.
    *
-   * @param request The request.
+   * @param name The name of the request.
+   * @param data The request data.
    * @param targetOrigin The target origin.
    * @param responseHandler The response handler.
    */
-  public void postRequest(Boolean request, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  public void postRequest(String name, Boolean data, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
-   * Post the given request with the given target origin.
+   * Post a request with the given name and data and target origin.
    *
-   * @param request The request.
+   * @param name The name of the request.
+   * @param data The request data.
    * @param targetOrigin The target origin.
    * @param responseHandler The response handler.
    */
-  public void postRequest(Number request, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  public void postRequest(String name, Number data, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
-   * Post the given request with the given target origin.
+   * Post a request with the given name and data and target origin.
    *
-   * @param request The request.
+   * @param name The name of the request.
+   * @param data The request data.
    * @param targetOrigin The target origin.
    * @param responseHandler The response handler.
    */
-  public void postRequest(String request, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  public void postRequest(String name, String data, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
-   * Post the given request with the given target origin.
+   * Post a request with the given name and data and target origin.
    *
-   * @param request The request.
+   * @param name The name of the request.
+   * @param data The request data.
    * @param targetOrigin The target origin.
    * @param responseHandler The response handler.
    */
-  public void postRequest(JavaScriptObject request, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), JsAny.create(request), targetOrigin, responseHandler);
+  public void postRequest(String name, JavaScriptObject data, String targetOrigin, ResponseHandler responseHandler) {
+    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
