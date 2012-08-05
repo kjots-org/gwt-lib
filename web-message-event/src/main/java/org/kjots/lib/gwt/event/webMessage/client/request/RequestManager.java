@@ -9,7 +9,7 @@ import java.util.Map;
 import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
-import org.kjots.lib.gwt.event.webMessage.client.WebMessageUtil;
+import org.kjots.lib.gwt.event.webMessage.client.WebMessage;
 import org.kjots.lib.gwt.js.util.client.JsAny;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -127,7 +127,7 @@ public class RequestManager {
       }
     });
     
-    WebMessageUtil.postMessage(window, JsAny.create(request), targetOrigin);
+    WebMessage.postMessage(window, JsAny.create(request), targetOrigin);
   }
   
   /**

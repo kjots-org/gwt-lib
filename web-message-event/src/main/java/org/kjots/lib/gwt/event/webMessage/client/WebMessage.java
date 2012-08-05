@@ -24,9 +24,9 @@ import com.google.gwt.user.client.ui.Frame;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.1
  */
-public class WebMessageUtil {
+public class WebMessage {
   /** The logger for this class. */
-  private static final Logger logger = LoggerFactory.getLogger(WebMessageUtil.class);
+  private static final Logger logger = LoggerFactory.getLogger(WebMessage.class);
   
   /**
    * Post the given message to the given window with the given target origin and transfer.
@@ -55,7 +55,7 @@ public class WebMessageUtil {
    * @param transfer The transfer.
    */
   public static native void postMessage(JavaScriptObject window, JsAny<?> message, String targetOrigin, JsArray<JavaScriptObject> transfer) /*-{
-    @org.kjots.lib.gwt.event.webMessage.client.WebMessageUtil::logPostMessage(Lcom/google/gwt/core/client/JavaScriptObject;Lorg/kjots/lib/gwt/js/util/client/JsAny;Ljava/lang/String;Lcom/google/gwt/core/client/JsArray;)(window, message, targetOrigin, transfer);
+    @org.kjots.lib.gwt.event.webMessage.client.WebMessage::logPostMessage(Lcom/google/gwt/core/client/JavaScriptObject;Lorg/kjots/lib/gwt/js/util/client/JsAny;Ljava/lang/String;Lcom/google/gwt/core/client/JsArray;)(window, message, targetOrigin, transfer);
     
     window.postMessage(message.value, targetOrigin, transfer);
   }-*/;
@@ -98,10 +98,10 @@ public class WebMessageUtil {
         if (attachEvent.isAttached()) {
           this.messageEventListener = createMessageEventHandler(frame, frame.getElement());
           
-          WebMessageUtil.addMessageEventListener(this.messageEventListener);
+          WebMessage.addMessageEventListener(this.messageEventListener);
         }
         else {
-          WebMessageUtil.removeMessageEventListener(this.messageEventListener);
+          WebMessage.removeMessageEventListener(this.messageEventListener);
           
           this.messageEventListener = null;
         }
@@ -109,7 +109,7 @@ public class WebMessageUtil {
       
       private native JavaScriptObject createMessageEventHandler(HasHandlers source, Element element) /*-{
         return function(messageEvent) {
-          @org.kjots.lib.gwt.event.webMessage.client.WebMessageUtil::logMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(messageEvent);
+          @org.kjots.lib.gwt.event.webMessage.client.WebMessage::logMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(messageEvent);
           
           if (messageEvent.source === element.contentWindow) {
             @org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent::fire(Lcom/google/gwt/event/shared/HasHandlers;Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(source, messageEvent);

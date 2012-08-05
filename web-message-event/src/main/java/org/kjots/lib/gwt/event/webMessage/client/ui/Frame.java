@@ -6,7 +6,7 @@ package org.kjots.lib.gwt.event.webMessage.client.ui;
 import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
-import org.kjots.lib.gwt.event.webMessage.client.WebMessageUtil;
+import org.kjots.lib.gwt.event.webMessage.client.WebMessage;
 import org.kjots.lib.gwt.event.webMessage.client.request.RequestManager;
 import org.kjots.lib.gwt.event.webMessage.client.request.ResponseHandler;
 import org.kjots.lib.gwt.js.util.client.JsAny;
@@ -57,7 +57,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame() {
     super();
     
-    WebMessageUtil.bridge(this);
+    WebMessage.bridge(this);
   }
 
   /**
@@ -69,7 +69,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame(String url) {
     super(url);
     
-    WebMessageUtil.bridge(this);
+    WebMessage.bridge(this);
   }
   
   /**
@@ -91,7 +91,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
    * @param transfer The transfer.
    */
   public void postMessage(Boolean message, String targetOrigin, JavaScriptObject... transfer) {
-    WebMessageUtil.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
+    WebMessage.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -102,7 +102,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
    * @param transfer The transfer.
    */
   public void postMessage(Number message, String targetOrigin, JavaScriptObject... transfer) {
-    WebMessageUtil.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
+    WebMessage.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -113,7 +113,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
    * @param transfer The transfer.
    */
   public void postMessage(String message, String targetOrigin, JavaScriptObject... transfer) {
-    WebMessageUtil.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
+    WebMessage.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -124,7 +124,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
    * @param transfer The transfer.
    */
   public void postMessage(JavaScriptObject message, String targetOrigin, JavaScriptObject... transfer) {
-    WebMessageUtil.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
+    WebMessage.postMessage(this.getContentWindow(), JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -184,7 +184,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   protected Frame(Element element) {
     super(element);
     
-    WebMessageUtil.bridge(this);
+    WebMessage.bridge(this);
   }
   
   /**
