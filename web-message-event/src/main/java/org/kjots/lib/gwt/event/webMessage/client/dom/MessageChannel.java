@@ -20,7 +20,7 @@ public class MessageChannel extends JavaScriptObject {
    * @return The message channel.
    */
   public static native MessageChannel create() /*-{
-    return new $wnd.MessageChannel();
+    return new MessageChannel();
   }-*/;
   
   /**

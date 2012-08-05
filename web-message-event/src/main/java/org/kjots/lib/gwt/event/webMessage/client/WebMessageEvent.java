@@ -35,9 +35,6 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
   
   /** The logger for this class. */
   private static final Logger logger = LoggerFactory.getLogger(WebMessageEvent.class);
-  {
-    LoggerFactory.getLogger(WebMessageEvent.class);
-  }
   
   /** The message event. */
   private final MessageEvent messageEvent;
@@ -93,7 +90,10 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
    * @param messageEventListener The given message event listener.
    */
   private static native void addMessageEventListener(JavaScriptObject messageEventListener) /*-{
-    $wnd.addEventListener("message", messageEventListener, false);
+    window.addEventListener("message", messageEventListener, false);
+    if ($wnd !== window) {
+      $wnd.addEventListener("message", messageEventListener, false);
+    }
   }-*/;
   
   /**
@@ -102,7 +102,10 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
    * @param messageEventListener The given message event listener.
    */
   private static native void removeMessageEventListener(JavaScriptObject messageEventListener) /*-{
-    $wnd.removeEventListener("message", messageEventListener, false);
+    window.removeEventListener("message", messageEventListener, false);
+    if ($wnd !== window) {
+      $wnd.removeEventListener("message", messageEventListener, false);
+    }
   }-*/;
 
   /**
