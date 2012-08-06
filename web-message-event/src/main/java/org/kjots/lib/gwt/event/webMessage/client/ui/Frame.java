@@ -7,6 +7,9 @@ import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessage;
+import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
+import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventHandler;
+import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventListener;
 import org.kjots.lib.gwt.event.webMessage.client.request.RequestManager;
 import org.kjots.lib.gwt.event.webMessage.client.request.ResponseHandler;
 import org.kjots.lib.gwt.js.util.client.JsAny;
@@ -33,6 +36,9 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   /** The request manager. */
   private final RequestManager requestManager = new RequestManager(this);
   
+  /** The message event listener. */
+  private final MessageEventListener messageEventListener;
+  
   /**
    * @see com.google.gwt.user.client.ui.Frame#wrap(Element)
    */
@@ -57,7 +63,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame() {
     super();
     
-    WebMessage.bridge(this);
+    this.messageEventListener = this.createMessageEventListener();
   }
 
   /**
@@ -69,7 +75,7 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   public Frame(String url) {
     super(url);
     
-    WebMessage.bridge(this);
+    this.messageEventListener = this.createMessageEventListener();
   }
   
   /**
@@ -184,7 +190,37 @@ public class Frame extends com.google.gwt.user.client.ui.Frame implements HasWeb
   protected Frame(Element element) {
     super(element);
     
-    WebMessage.bridge(this);
+    this.messageEventListener = this.createMessageEventListener();
+  }
+  
+  /**
+   * Receive notification that the widget has been attached to the DOM.
+   */
+  @Override
+  protected void onLoad() {
+    this.messageEventListener.bind();
+  }
+
+  /**
+   * Receive notification that the widget is about to be detached from the DOM.
+   */
+  @Override
+  protected void onUnload() {
+    this.messageEventListener.unbind();
+  }
+
+  /**
+   * Create the message event listener.
+   *
+   * @return The message event listener.
+   */
+  private MessageEventListener createMessageEventListener() {
+    return MessageEventListener.create(getElement(), new MessageEventHandler() {
+      @Override
+      public void onMessageEvent(MessageEvent messageEvent) {
+        WebMessageEvent.fire(Frame.this, messageEvent);
+      }
+    });
   }
   
   /**

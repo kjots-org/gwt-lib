@@ -35,7 +35,7 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
    * @param source The source of the web message event.
    * @param messageEvent The message event.
    */
-  static void fire(HasHandlers source, MessageEvent messageEvent) {
+  public static void fire(HasHandlers source, MessageEvent messageEvent) {
     source.fireEvent(new WebMessageEvent(messageEvent));
   }
   

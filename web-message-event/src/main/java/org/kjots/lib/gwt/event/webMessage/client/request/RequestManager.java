@@ -93,7 +93,7 @@ public class RequestManager {
   /**
    * Construct a new Request Manager.
    *
-   * @param window The source.
+   * @param source The source.
    */
   public RequestManager(HasWebMessageHandlers source) {
     source.addWebMessageHandler(new WebMessageHandler() {
