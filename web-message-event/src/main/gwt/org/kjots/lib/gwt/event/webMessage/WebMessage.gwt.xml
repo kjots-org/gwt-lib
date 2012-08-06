@@ -29,5 +29,5 @@
   <inherits name="org.kjots.lib.gwt.Slf4jGwtLog"/>
   <inherits name="org.kjots.lib.gwt.js.util.JsUtils"/>
   
-  <entry-point class="org.kjots.lib.gwt.event.webMessage.client.WebMessage.EntryPoint"/>
+  <entry-point class="org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventLogger"/>
 </module>
