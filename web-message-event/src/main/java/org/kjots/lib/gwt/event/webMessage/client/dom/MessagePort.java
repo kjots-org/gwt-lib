@@ -3,7 +3,10 @@
  */
 package org.kjots.lib.gwt.event.webMessage.client.dom;
 
+import org.kjots.lib.gwt.js.util.client.JSON;
 import org.kjots.lib.gwt.js.util.client.JsAny;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
@@ -17,14 +20,41 @@ import com.google.gwt.core.client.JsArray;
  * @since 1.1
  */
 public class MessagePort extends JavaScriptObject {
+  /** The logger for this class. */
+  private static final Logger logger = LoggerFactory.getLogger("org.kjots.lib.gwt.event.webMessage.client.dom.MessagePort");
+  
   /**
-   * Post the given message.
+   * Log the posting of the given message.
+   * 
+   * @param message The message.
+   * @param targetOrigin The target origin.
+   * @param transfer The transfer.
+   */
+  static void logPostMessage(MessagePort messagePort, JsAny<?> message, JsArray<JavaScriptObject> transfer) {
+    if (logger.isDebugEnabled()) {
+      logger.debug("Posting message: messagePort={}, message={}, transfer={}", new Object[] {
+        messagePort,
+        JSON.stringify(message),
+        transfer
+      });
+    }
+  }
+  
+  /**
+   * Post the given message with the given transfer.
    *
    * @param message The message.
+   * @param transfer The transfer.
    */
-  public final native void postMessage(JsAny<?> message) /*-{
-    this.postMessage(message.value);
-  }-*/;
+  public final void postMessage(JsAny<?> message, JavaScriptObject... transfer) {
+    JsArray<JavaScriptObject> jsTransfer = JavaScriptObject.createArray().cast();
+    
+    for (JavaScriptObject jso : transfer) {
+      jsTransfer.push(jso);
+    }
+    
+    this.postMessage(message, jsTransfer);
+  };
   
   /**
    * Post the given message with the given transfer.
@@ -33,6 +63,8 @@ public class MessagePort extends JavaScriptObject {
    * @param transfer The transfer.
    */
   public final native void postMessage(JsAny<?> message, JsArray<JavaScriptObject> transfer) /*-{
+    @org.kjots.lib.gwt.event.webMessage.client.dom.MessagePort::logPostMessage(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessagePort;Lorg/kjots/lib/gwt/js/util/client/JsAny;Lcom/google/gwt/core/client/JsArray;)(this, message, targetOrigin, transfer);
+    
     this.postMessage(message.value, transfer);
   }-*/;
   

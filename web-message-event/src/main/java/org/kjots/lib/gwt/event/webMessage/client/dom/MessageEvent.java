@@ -49,7 +49,7 @@ public class MessageEvent extends JavaScriptObject {
    *
    * @return The source.
    */
-  public final native JavaScriptObject getSource() /*-{
+  public final native Window getSource() /*-{
     return this.source;
   }-*/;
   

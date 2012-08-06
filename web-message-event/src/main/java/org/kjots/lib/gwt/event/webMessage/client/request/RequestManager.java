@@ -9,10 +9,8 @@ import java.util.Map;
 import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
-import org.kjots.lib.gwt.event.webMessage.client.WebMessage;
+import org.kjots.lib.gwt.event.webMessage.client.dom.Window;
 import org.kjots.lib.gwt.js.util.client.JsAny;
-
-import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Request Manager.
@@ -117,7 +115,7 @@ public class RequestManager {
    * @param targetOrigin The target origin.
    * @param responseHandler The response handler.
    */
-  public void postRequest(JavaScriptObject window, String name, JsAny<?> data, String targetOrigin, final ResponseHandler responseHandler) {
+  public void postRequest(Window window, String name, JsAny<?> data, String targetOrigin, final ResponseHandler responseHandler) {
     final Request request = createRequest(name, data);
     
     responseHandlers.put(getRequestId(request), new RegisteredResponseHandler() {
@@ -127,7 +125,7 @@ public class RequestManager {
       }
     });
     
-    WebMessage.postMessage(window, JsAny.create(request), targetOrigin);
+    window.postMessage(JsAny.create(request), targetOrigin);
   }
   
   /**
