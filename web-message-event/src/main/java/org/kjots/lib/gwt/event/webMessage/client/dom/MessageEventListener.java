@@ -42,26 +42,6 @@ public class MessageEventListener extends JavaScriptObject {
   }-*/;
   
   /**
-   * Bind the message event listener.
-   */
-  public final native void bind() /*-{
-    window.addEventListener("message", this, false);
-    if ($wnd !== window) {
-      $wnd.addEventListener("message", this, false);
-    }
-  }-*/;
-  
-  /**
-   * Unbind the message event listener.
-   */
-  public final native void unbind() /*-{
-    window.removeEventListener("message", this, false);
-    if ($wnd !== window) {
-      $wnd.removeEventListener("message", this, false);
-    }
-  }-*/;
-  
-  /**
    * Construct a new Message Event Listener.
    */
   protected MessageEventListener() {

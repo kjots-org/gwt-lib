@@ -103,6 +103,24 @@ public class MessagePort extends JavaScriptObject {
   }-*/;
   
   /**
+   * Add the given message event listener.
+   *
+   * @param listener The message event listener.
+   */
+  public final native void addMessageEventListener(MessageEventListener listener) /*-{
+    this.addEventListener("message", listener, false);
+  }-*/;
+  
+  /**
+   * Remove the given message event listener.
+   *
+   * @param listener The message event listener.
+   */
+  public final native void removeMessageEventListener(MessageEventListener listener) /*-{
+    this.removeEventListener("message", listener, false);
+  }-*/;
+  
+  /**
    * Construct a new Message Port.
    */
   protected MessagePort() {

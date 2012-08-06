@@ -10,6 +10,7 @@ import org.kjots.lib.gwt.event.webMessage.client.dom.IFrameElement;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventHandler;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventListener;
+import org.kjots.lib.gwt.event.webMessage.client.dom.Window;
 import org.kjots.lib.gwt.event.webMessage.client.request.RequestManager;
 import org.kjots.lib.gwt.event.webMessage.client.request.ResponseHandler;
 import org.kjots.lib.gwt.js.util.client.JsAny;
@@ -163,7 +164,10 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    */
   @Override
   protected void onLoad() {
-    this.messageEventListener.bind();
+    Window.get().addMessageEventListener(this.messageEventListener);
+    if (!Window.getWnd().equals(Window.get())) {
+      Window.getWnd().addMessageEventListener(this.messageEventListener);
+    }
   }
 
   /**
@@ -171,7 +175,10 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    */
   @Override
   protected void onUnload() {
-    this.messageEventListener.unbind();
+    Window.get().removeMessageEventListener(this.messageEventListener);
+    if (!Window.getWnd().equals(Window.get())) {
+      Window.getWnd().removeMessageEventListener(this.messageEventListener);
+    }
   }
   
   /**

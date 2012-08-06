@@ -24,6 +24,24 @@ public class Window extends JavaScriptObject {
   private static final Logger logger = LoggerFactory.getLogger("org.kjots.lib.gwt.event.webMessage.client.dom.Window");
   
   /**
+   * Retrieve the global window object.
+   *
+   * @return The global window object.
+   */
+  public static native Window get() /*-{
+    return window;
+  }-*/;
+  
+  /**
+   * Retrieve the GWT <code>$wnd</code> object.
+   *
+   * @return The GWT <code>$wnd</code> object.
+   */
+  public static native Window getWnd() /*-{
+    return $wnd;
+  }-*/;
+
+  /**
    * Log the posting of the given message.
    * 
    * @param message The message.
@@ -40,15 +58,6 @@ public class Window extends JavaScriptObject {
       });
     }
   }
-  
-  /**
-   * Retrieve the URL of the window object.
-   *
-   * @return The URL.
-   */
-  public final native String getUrl() /*-{
-    return this.location.href;
-  }-*/;
   
   /**
    * Post the given message with the given target origin and transfer.
@@ -78,6 +87,33 @@ public class Window extends JavaScriptObject {
     @org.kjots.lib.gwt.event.webMessage.client.dom.Window::logPostMessage(Lorg/kjots/lib/gwt/event/webMessage/client/dom/Window;Lorg/kjots/lib/gwt/js/util/client/JsAny;Ljava/lang/String;Lcom/google/gwt/core/client/JsArray;)(this, message, targetOrigin, transfer);
     
     this.postMessage(message.value, targetOrigin, transfer);
+  }-*/;
+  
+  /**
+   * Add the given message event listener.
+   *
+   * @param listener The message event listener.
+   */
+  public final native void addMessageEventListener(MessageEventListener listener) /*-{
+    this.addEventListener("message", listener, false);
+  }-*/;
+  
+  /**
+   * Remove the given message event listener.
+   *
+   * @param listener The message event listener.
+   */
+  public final native void removeMessageEventListener(MessageEventListener listener) /*-{
+    this.removeEventListener("message", listener, false);
+  }-*/;
+  
+  /**
+   * Retrieve the URL of the window object.
+   *
+   * @return The URL.
+   */
+  public final native String getUrl() /*-{
+    return this.location.href;
   }-*/;
   
   /**

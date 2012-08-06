@@ -42,6 +42,11 @@ public class MessageEventLogger implements MessageEventHandler, EntryPoint {
    */
   @Override
   public void onModuleLoad() {
-    MessageEventListener.create(this).bind();
+    MessageEventListener messageEventListener = MessageEventListener.create(this);
+    
+    Window.get().addMessageEventListener(messageEventListener);
+    if (!Window.getWnd().equals(Window.get())) {
+      Window.getWnd().addMessageEventListener(messageEventListener);
+    }
   }
 }
