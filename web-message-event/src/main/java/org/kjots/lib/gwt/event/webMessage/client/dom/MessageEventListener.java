@@ -4,7 +4,6 @@
 package org.kjots.lib.gwt.event.webMessage.client.dom;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
 
 /**
  * Message Event Listener.
@@ -28,15 +27,15 @@ public class MessageEventListener extends JavaScriptObject {
   }-*/;
   
   /**
-   * Create a new message event listener for the given element.
+   * Create a new message event listener for the given iframe.
    *
-   * @param element The element.
+   * @param iframe The iframe element.
    * @param handler The message event handler.
    * @return The message event listener.
    */
-  public static native MessageEventListener create(Element element, MessageEventHandler handler) /*-{
+  public static native MessageEventListener create(IFrameElement iframe, MessageEventHandler handler) /*-{
     return function(messageEvent) {
-      if (messageEvent.source === element.contentWindow) {
+      if (messageEvent.source === iframe.contentWindow) {
         handler.@org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventHandler::onMessageEvent(Lorg/kjots/lib/gwt/event/webMessage/client/dom/MessageEvent;)(messageEvent);
       }
     };

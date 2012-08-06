@@ -6,10 +6,10 @@ package org.kjots.lib.gwt.event.webMessage.client.ui;
 import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
+import org.kjots.lib.gwt.event.webMessage.client.dom.IFrameElement;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventHandler;
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEventListener;
-import org.kjots.lib.gwt.event.webMessage.client.dom.Window;
 import org.kjots.lib.gwt.event.webMessage.client.request.RequestManager;
 import org.kjots.lib.gwt.event.webMessage.client.request.ResponseHandler;
 import org.kjots.lib.gwt.js.util.client.JsAny;
@@ -47,7 +47,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
   public NamedFrame(String name) {
     super(name);
     
-    this.messageEventListener = MessageEventListener.create(getElement(), new MessageEventHandler() {
+    this.messageEventListener = MessageEventListener.create(getIFrameElement(), new MessageEventHandler() {
       @Override
       public void onMessageEvent(MessageEvent messageEvent) {
         WebMessageEvent.fire(NamedFrame.this, messageEvent);
@@ -74,7 +74,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param transfer The transfer.
    */
   public void postMessage(Boolean message, String targetOrigin, JavaScriptObject... transfer) {
-    this.getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
+    this.getIFrameElement().getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -85,7 +85,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param transfer The transfer.
    */
   public void postMessage(Number message, String targetOrigin, JavaScriptObject... transfer) {
-    this.getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
+    this.getIFrameElement().getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -96,7 +96,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param transfer The transfer.
    */
   public void postMessage(String message, String targetOrigin, JavaScriptObject... transfer) {
-    this.getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
+    this.getIFrameElement().getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -107,7 +107,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param transfer The transfer.
    */
   public void postMessage(JavaScriptObject message, String targetOrigin, JavaScriptObject... transfer) {
-    this.getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
+    this.getIFrameElement().getContentWindow().postMessage(JsAny.create(message), targetOrigin, transfer);
   }
   
   /**
@@ -119,7 +119,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param responseHandler The response handler.
    */
   public void postRequest(String name, Boolean data, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
+    this.requestManager.postRequest(this.getIFrameElement().getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
@@ -131,7 +131,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param responseHandler The response handler.
    */
   public void postRequest(String name, Number data, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
+    this.requestManager.postRequest(this.getIFrameElement().getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
@@ -143,7 +143,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param responseHandler The response handler.
    */
   public void postRequest(String name, String data, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
+    this.requestManager.postRequest(this.getIFrameElement().getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
@@ -155,7 +155,7 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
    * @param responseHandler The response handler.
    */
   public void postRequest(String name, JavaScriptObject data, String targetOrigin, ResponseHandler responseHandler) {
-    this.requestManager.postRequest(this.getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
+    this.requestManager.postRequest(this.getIFrameElement().getContentWindow(), name, JsAny.create(data), targetOrigin, responseHandler);
   }
   
   /**
@@ -175,11 +175,11 @@ public class NamedFrame extends com.google.gwt.user.client.ui.NamedFrame impleme
   }
   
   /**
-   * Retrieve the content window.
+   * Retrieve the iframe element.
    *
-   * @return The content window.
+   * @return the iframe element.
    */
-  private native Window getContentWindow() /*-{
-    return this.@com.google.gwt.user.client.ui.UIObject::getElement()().contentWindow;
-  }-*/;
+  private IFrameElement getIFrameElement() {
+    return getElement().cast();
+  }
 }
