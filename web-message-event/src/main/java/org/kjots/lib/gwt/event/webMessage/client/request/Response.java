@@ -17,20 +17,6 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Response extends JavaScriptObject {
   /**
-   * Create a new response for the given request with the given data.
-   *
-   * @param request The request.
-   * @param data The response data.
-   * @return The response.
-   */
-  public static native Request create(Request request, JsAny<?> data) /*-{
-    return { 
-      "$response" : request["$request"],
-      "data" : data.value
-    };
-  }-*/;
-  
-  /**
    * Determine if the given object is a response.
    *
    * @param object The object.

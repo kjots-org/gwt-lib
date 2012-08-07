@@ -9,6 +9,7 @@ import java.util.Map;
 import org.kjots.lib.gwt.event.webMessage.client.HasWebMessageHandlers;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.WebMessageHandler;
+import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
 import org.kjots.lib.gwt.event.webMessage.client.dom.Window;
 import org.kjots.lib.gwt.js.util.client.JsAny;
 
@@ -97,7 +98,9 @@ public class RequestManager {
     source.addWebMessageHandler(new WebMessageHandler() {
       @Override
       public void onWebMessage(WebMessageEvent webMessageEvent) {
-        Response response = Response.asResponse(webMessageEvent.getMessage().asObject());
+        MessageEvent messageEvent = webMessageEvent.getMessageEvent();
+        
+        Response response = Response.asResponse(messageEvent.getData().asObject());
         if (response != null) {
           RequestManager.this.onResponse(response);
         }

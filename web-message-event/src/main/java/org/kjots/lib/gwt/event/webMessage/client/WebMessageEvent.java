@@ -4,7 +4,6 @@
 package org.kjots.lib.gwt.event.webMessage.client;
 
 import org.kjots.lib.gwt.event.webMessage.client.dom.MessageEvent;
-import org.kjots.lib.gwt.js.util.client.JsAny;
 
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;
@@ -66,15 +65,6 @@ public class WebMessageEvent extends GwtEvent<WebMessageHandler> {
    */
   public MessageEvent getMessageEvent() {
     return this.messageEvent;
-  }
-
-  /**
-   * Retrieve the message.
-   *
-   * @return The message.
-   */
-  public final JsAny<?> getMessage() {
-    return this.messageEvent.getData();
   }
 
   /**
