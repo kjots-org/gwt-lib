@@ -25,21 +25,17 @@
     <version>1.1-SNAPSHOT</version>
   </parent>
   
-  <artifactId>app-support</artifactId>
+  <artifactId>gin-entry</artifactId>
   
   <packaging>jar</packaging>
   
-  <name>kjots.org GWT Library - Application Support</name>
-  <description>kjots.org GWT Library - Application Support</description>
-
+  <name>kjots.org GWT Library - GIN Entry</name>
+  <description>kjots.org GWT Library - GIN Entry</description>
+  
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>gin-entry</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>signal-event</artifactId>
+      <groupId>com.google.gwt.inject</groupId>
+      <artifactId>gin</artifactId>
     </dependency>
   </dependencies>
 </project>

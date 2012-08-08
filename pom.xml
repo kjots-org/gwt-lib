@@ -130,7 +130,7 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>gin-support</artifactId>
+        <artifactId>gin-entry</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -632,7 +632,7 @@
   
   <modules>
     <module>app-support</module>
-    <module>gin-support</module>
+    <module>gin-entry</module>
     <module>js-utils</module>
     <module>message-event</module>
     <module>signal-event</module>

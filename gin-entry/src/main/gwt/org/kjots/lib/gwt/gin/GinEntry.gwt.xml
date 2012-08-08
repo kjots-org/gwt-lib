@@ -16,9 +16,9 @@
 -->
 <!DOCTYPE module SYSTEM "http://google-web-toolkit.googlecode.com/svn/releases/2.4/distro-source/core/src/gwt-module.dtd">
 <!--
-  org.kjots.lib.gwt.app.Application
+  org.kjots.lib.gwt.gin.GinEntry
   
-  Created: 27th December 2011.
+  Created: 25th November 2011.
   
   @author Karl J. Ots <kjots@kjots.org>
   @since 1.0
@@ -26,5 +26,7 @@
 <module>
   <inherits name="com.google.gwt.user.User"/>
   
-  <inherits name=" org.kjots.lib.gwt.gin.GinEntry"/>
+  <inherits name="com.google.gwt.inject.Inject"/>
+  
+  <entry-point class="org.kjots.lib.gwt.gin.client.entry.EntryGinModule.BootstrapEntryPoint"/>
 </module>
