@@ -26,5 +26,5 @@
 <module>
   <inherits name="com.google.gwt.user.User"/>
   
-  <inherits name=" org.kjots.lib.gwt.gin.GinEntry"/>
+  <inherits name="org.kjots.lib.gwt.gin.GinEntry"/>
 </module>
