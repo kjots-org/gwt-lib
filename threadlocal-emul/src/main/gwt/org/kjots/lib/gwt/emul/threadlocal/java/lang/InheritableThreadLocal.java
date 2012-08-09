@@ -15,8 +15,6 @@
  */
 package java.lang;
 
-import org.kjots.lib.gwt.client.ThreadLocalEmulGwtTestBase;
-
 /**
  * java.lang.InheritableThreadLocal Emulation.
  * <p>
