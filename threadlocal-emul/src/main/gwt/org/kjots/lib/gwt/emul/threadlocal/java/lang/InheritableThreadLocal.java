@@ -23,7 +23,7 @@ package java.lang;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.1
  */
-public class InheritableThreadLocal<T> extends ThreadLocal {
+public class InheritableThreadLocal<T> extends ThreadLocal<T> {
   /**
    * Retrieve the child value for the given parent value.
    *
