@@ -76,6 +76,7 @@ public class MarkerFactory {
   /**
    * Create a marker which is detached (even at birth) from the MarkerFactory.
    *
+   * @param name the name of the marker
    * @return a dangling marker
    * @since 1.5.1
    */

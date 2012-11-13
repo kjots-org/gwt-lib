@@ -36,19 +36,20 @@ import org.slf4j.impl.StaticLoggerBinder;
  * various logging APIs, most notably for log4j, logback and JDK 1.4 logging.
  * Other implementations such as {@link org.slf4j.impl.NOPLogger NOPLogger} and
  * {@link org.slf4j.impl.SimpleLogger SimpleLogger} are also supported.
- * 
- * <p>
+ * <p/>
+ * <p/>
  * <code>LoggerFactory</code> is essentially a wrapper around an
  * {@link ILoggerFactory} instance bound with <code>LoggerFactory</code> at
  * compile time.
- * 
- * <p>
+ * <p/>
+ * <p/>
  * Please note that all methods in <code>LoggerFactory</code> are static.
  * 
  * Modified for use in <em>GWT</em> by <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>:
  * <ul>
  * <li>Removed catch blocks for java.lang.NoClassDefFoundError, java.lang.NoSuchMethodError and java.lang.NoSuchFieldError.</li>
- * <li>Removed body of singleImplementationSanityCheck() method.</li>
+ * <li>Removed body of findPossibleStaticLoggerBinderPathSet() method.</li>
+ * <li>Removed body of reportMultipleBindingAmbiguity() method.</li>
  * </ul>
  * 
  * @author Ceki G&uuml;lc&uuml;
@@ -57,22 +58,22 @@ import org.slf4j.impl.StaticLoggerBinder;
 public final class LoggerFactory {
 
   static final String CODES_PREFIX = "http://www.slf4j.org/codes.html";
-    
-  static final String NO_STATICLOGGERBINDER_URL = CODES_PREFIX+"#StaticLoggerBinder";
-  static final String MULTIPLE_BINDINGS_URL = CODES_PREFIX+"#multiple_bindings";
-  static final String NULL_LF_URL = CODES_PREFIX+"#null_LF";
-  static final String VERSION_MISMATCH = CODES_PREFIX+"#version_mismatch";
-  static final String SUBSTITUTE_LOGGER_URL = CODES_PREFIX+"#substituteLogger";
 
-  static final String UNSUCCESSFUL_INIT_URL = CODES_PREFIX+"#unsuccessfulInit";
+  static final String NO_STATICLOGGERBINDER_URL = CODES_PREFIX + "#StaticLoggerBinder";
+  static final String MULTIPLE_BINDINGS_URL = CODES_PREFIX + "#multiple_bindings";
+  static final String NULL_LF_URL = CODES_PREFIX + "#null_LF";
+  static final String VERSION_MISMATCH = CODES_PREFIX + "#version_mismatch";
+  static final String SUBSTITUTE_LOGGER_URL = CODES_PREFIX + "#substituteLogger";
+
+  static final String UNSUCCESSFUL_INIT_URL = CODES_PREFIX + "#unsuccessfulInit";
   static final String UNSUCCESSFUL_INIT_MSG = "org.slf4j.LoggerFactory could not be successfully initialized. See also "
-      + UNSUCCESSFUL_INIT_URL;
+          + UNSUCCESSFUL_INIT_URL;
 
   static final int UNINITIALIZED = 0;
-  static final int ONGOING_INITILIZATION = 1;
-  static final int FAILED_INITILIZATION = 2;
-  static final int SUCCESSFUL_INITILIZATION = 3;
-  static final int NOP_FALLBACK_INITILIZATION = 4;
+  static final int ONGOING_INITIALIZATION = 1;
+  static final int FAILED_INITIALIZATION = 2;
+  static final int SUCCESSFUL_INITIALIZATION = 3;
+  static final int NOP_FALLBACK_INITIALIZATION = 4;
 
   static int INITIALIZATION_STATE = UNINITIALIZED;
   static SubstituteLoggerFactory TEMP_FACTORY = new SubstituteLoggerFactory();
@@ -81,11 +82,11 @@ public final class LoggerFactory {
   /**
    * It is LoggerFactory's responsibility to track version changes and manage
    * the compatibility list.
-   * 
-   * <p>
+   * <p/>
+   * <p/>
    * It is assumed that all versions in the 1.6 are mutually compatible.
-   * */
-  static private final String[] API_COMPATIBILITY_LIST = new String[] { "1.6" };
+   */
+  static private final String[] API_COMPATIBILITY_LIST = new String[]{"1.6", "1.7"};
 
   // private constructor prevents instantiation
   private LoggerFactory() {
@@ -93,13 +94,13 @@ public final class LoggerFactory {
 
   /**
    * Force LoggerFactory to consider itself uninitialized.
-   * 
-   * <p>
+   * <p/>
+   * <p/>
    * This method is intended to be called by classes (in the same package) for
    * testing purposes. This method is internal. It can be modified, renamed or
    * removed at any time without notice.
-   * 
-   * <p>
+   * <p/>
+   * <p/>
    * You are strongly discouraged from calling this method in production code.
    */
   static void reset() {
@@ -108,29 +109,30 @@ public final class LoggerFactory {
   }
 
   private final static void performInitialization() {
-    singleImplementationSanityCheck();
     bind();
-    if (INITIALIZATION_STATE == SUCCESSFUL_INITILIZATION) {
+    if (INITIALIZATION_STATE == SUCCESSFUL_INITIALIZATION) {
       versionSanityCheck();
-   
     }
   }
 
   private static boolean messageContainsOrgSlf4jImplStaticLoggerBinder(String msg) {
-    if(msg == null)
+    if (msg == null)
       return false;
-    if(msg.indexOf("org/slf4j/impl/StaticLoggerBinder") != -1)
+    if (msg.indexOf("org/slf4j/impl/StaticLoggerBinder") != -1)
       return true;
-    if(msg.indexOf("org.slf4j.impl.StaticLoggerBinder") != -1)
+    if (msg.indexOf("org.slf4j.impl.StaticLoggerBinder") != -1)
       return true;
     return false;
   }
 
   private final static void bind() {
     try {
+      Set staticLoggerBinderPathSet = findPossibleStaticLoggerBinderPathSet();
+      reportMultipleBindingAmbiguity(staticLoggerBinderPathSet);
       // the next line does the binding
       StaticLoggerBinder.getSingleton();
-      INITIALIZATION_STATE = SUCCESSFUL_INITILIZATION;
+      INITIALIZATION_STATE = SUCCESSFUL_INITIALIZATION;
+      reportActualBinding(staticLoggerBinderPathSet);
       emitSubstituteLoggerWarning();
     } catch (Exception e) {
       failedBinding(e);
@@ -139,7 +141,7 @@ public final class LoggerFactory {
   }
 
   static void failedBinding(Throwable t) {
-    INITIALIZATION_STATE = FAILED_INITILIZATION;
+    INITIALIZATION_STATE = FAILED_INITIALIZATION;
     Util.report("Failed to instantiate SLF4J LoggerFactory", t);
   }
 
@@ -148,10 +150,8 @@ public final class LoggerFactory {
     if (loggerNameList.size() == 0) {
       return;
     }
-    Util
-        .report("The following loggers will not work because they were created");
-    Util
-        .report("during the default configuration phase of the underlying logging system.");
+    Util.report("The following loggers will not work because they were created");
+    Util.report("during the default configuration phase of the underlying logging system.");
     Util.report("See also " + SUBSTITUTE_LOGGER_URL);
     for (int i = 0; i < loggerNameList.size(); i++) {
       String loggerName = (String) loggerNameList.get(i);
@@ -171,8 +171,8 @@ public final class LoggerFactory {
       }
       if (!match) {
         Util.report("The requested version " + requested
-            + " by your slf4j binding is not compatible with "
-            + Arrays.asList(API_COMPATIBILITY_LIST).toString());
+                + " by your slf4j binding is not compatible with "
+                + Arrays.asList(API_COMPATIBILITY_LIST).toString());
         Util.report("See " + VERSION_MISMATCH + " for further details.");
       }
     } catch (Throwable e) {
@@ -185,15 +185,34 @@ public final class LoggerFactory {
   // the class itself.
   private static String STATIC_LOGGER_BINDER_PATH = "org/slf4j/impl/StaticLoggerBinder.class";
 
-  private static void singleImplementationSanityCheck() {
+  private static Set findPossibleStaticLoggerBinderPathSet() {
+    return Collections.emptySet();
   }
+
+  private static boolean isAmbiguousStaticLoggerBinderPathSet(Set staticLoggerBinderPathSet) {
+    return staticLoggerBinderPathSet.size() > 1;
+  }
+
+  /**
+   * Prints a warning message on the console if multiple bindings were found on the class path.
+   * No reporting is done otherwise.
+   *
+   */
+  private static void reportMultipleBindingAmbiguity(Set staticLoggerBinderPathSet) {
+  }
+
+  private static void reportActualBinding(Set staticLoggerBinderPathSet) {
+    if (isAmbiguousStaticLoggerBinderPathSet(staticLoggerBinderPathSet)) {
+      Util.report("Actual binding is of type ["+StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr()+"]");
+    }
+  }
+
 
   /**
    * Return a logger named according to the name parameter using the statically
    * bound {@link ILoggerFactory} instance.
-   * 
-   * @param name
-   *          The name of the logger.
+   *
+   * @param name The name of the logger.
    * @return logger
    */
   public static Logger getLogger(String name) {
@@ -204,9 +223,8 @@ public final class LoggerFactory {
   /**
    * Return a logger named corresponding to the class passed as parameter, using
    * the statically bound {@link ILoggerFactory} instance.
-   * 
-   * @param clazz
-   *          the returned logger will be named after clazz
+   *
+   * @param clazz the returned logger will be named after clazz
    * @return logger
    */
   public static Logger getLogger(Class clazz) {
@@ -215,29 +233,28 @@ public final class LoggerFactory {
 
   /**
    * Return the {@link ILoggerFactory} instance in use.
-   * 
-   * <p>
+   * <p/>
+   * <p/>
    * ILoggerFactory instance is bound with this class at compile time.
-   * 
+   *
    * @return the ILoggerFactory instance in use
    */
   public static ILoggerFactory getILoggerFactory() {
     if (INITIALIZATION_STATE == UNINITIALIZED) {
-      INITIALIZATION_STATE = ONGOING_INITILIZATION;
+      INITIALIZATION_STATE = ONGOING_INITIALIZATION;
       performInitialization();
-
     }
     switch (INITIALIZATION_STATE) {
-    case SUCCESSFUL_INITILIZATION:
-      return StaticLoggerBinder.getSingleton().getLoggerFactory();
-    case NOP_FALLBACK_INITILIZATION:
-      return NOP_FALLBACK_FACTORY;
-    case FAILED_INITILIZATION:
-      throw new IllegalStateException(UNSUCCESSFUL_INIT_MSG);
-    case ONGOING_INITILIZATION:
-      // support re-entrant behavior.
-      // See also http://bugzilla.slf4j.org/show_bug.cgi?id=106
-      return TEMP_FACTORY;
+      case SUCCESSFUL_INITIALIZATION:
+        return StaticLoggerBinder.getSingleton().getLoggerFactory();
+      case NOP_FALLBACK_INITIALIZATION:
+        return NOP_FALLBACK_FACTORY;
+      case FAILED_INITIALIZATION:
+        throw new IllegalStateException(UNSUCCESSFUL_INIT_MSG);
+      case ONGOING_INITIALIZATION:
+        // support re-entrant behavior.
+        // See also http://bugzilla.slf4j.org/show_bug.cgi?id=106
+        return TEMP_FACTORY;
     }
     throw new IllegalStateException("Unreachable code");
   }
