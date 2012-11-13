@@ -27,9 +27,9 @@ import org.slf4j.spi.MarkerFactoryBinder;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class StaticMarkerBinder implements MarkerFactoryBinder {
+public class GwtStaticMarkerBinder implements MarkerFactoryBinder {
   /** The singleton instance of this class. */
-  public static final StaticMarkerBinder SINGLETON = new StaticMarkerBinder();
+  public static final GwtStaticMarkerBinder SINGLETON = new GwtStaticMarkerBinder();
   
   /** The marker factory. */
   private final IMarkerFactory markerFactory = new BasicMarkerFactory();
@@ -59,6 +59,6 @@ public class StaticMarkerBinder implements MarkerFactoryBinder {
    * This constructor is declared <code>private</code> to prevent external
    * instantiation.
    */
-  private StaticMarkerBinder() {
+  private GwtStaticMarkerBinder() {
   }
 }

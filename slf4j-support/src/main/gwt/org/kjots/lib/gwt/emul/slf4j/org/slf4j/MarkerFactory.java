@@ -26,7 +26,7 @@ package org.slf4j;
 
 import org.slf4j.helpers.BasicMarkerFactory;
 import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticMarkerBinder;
+import org.slf4j.impl.GwtStaticMarkerBinder;
 
 /**
  * MarkerFactory is a utility class producing {@link Marker} instances as
@@ -41,6 +41,7 @@ import org.slf4j.impl.StaticMarkerBinder;
  * 
  * Modified for use in <em>GWT</em> by <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>:
  * <ul>
+ * <li>Changed to use org.slf4j.impl.GwtStaticMarkerBinder instead of org.slf4j.impl.StaticMarkerBinder.</li>
  * <li>Removed catch block for java.lang.NoClassDefFoundError.</li>
  * </ul>
  * 
@@ -54,7 +55,7 @@ public class MarkerFactory {
 
   static {
     try {
-      markerFactory = StaticMarkerBinder.SINGLETON.getMarkerFactory();
+      markerFactory = GwtStaticMarkerBinder.SINGLETON.getMarkerFactory();
     } catch (Exception e) {
       // we should never get here
       Util.report("Unexpected failure while binding MarkerFactory", e);

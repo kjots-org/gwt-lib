@@ -27,12 +27,12 @@ import org.slf4j.spi.LoggerFactoryBinder;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class StaticLoggerBinder implements LoggerFactoryBinder {
+public class GwtStaticLoggerBinder implements LoggerFactoryBinder {
   /** The requested API version. */
   public static String REQUESTED_API_VERSION = "1.6.99";
   
   /** The singleton instance of this class. */
-  private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
+  private static final GwtStaticLoggerBinder SINGLETON = new GwtStaticLoggerBinder();
   
   /** The logger factory. */
   private final ILoggerFactory loggerFactory = new GwtLogLoggerFactory();
@@ -45,7 +45,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
    *
    * @return The singleton instance of this class.
    */
-  public static final StaticLoggerBinder getSingleton() {
+  public static final GwtStaticLoggerBinder getSingleton() {
     return SINGLETON;
   }
   
@@ -71,6 +71,6 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
    * This constructor is declared <code>private</code> to prevent external
    * instantiation.
    */
-  private StaticLoggerBinder() {
+  private GwtStaticLoggerBinder() {
   }
 }

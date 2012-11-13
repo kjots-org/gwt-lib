@@ -29,7 +29,7 @@ import java.util.*;
 import org.slf4j.helpers.NOPLoggerFactory;
 import org.slf4j.helpers.SubstituteLoggerFactory;
 import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticLoggerBinder;
+import org.slf4j.impl.GwtStaticLoggerBinder;
 
 /**
  * The <code>LoggerFactory</code> is a utility class producing Loggers for
@@ -47,6 +47,7 @@ import org.slf4j.impl.StaticLoggerBinder;
  * 
  * Modified for use in <em>GWT</em> by <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>:
  * <ul>
+ * <li>Changed to use org.slf4j.impl.GwtStaticLoggerBinder instead of org.slf4j.impl.StaticLoggerBinder.</li>
  * <li>Removed catch blocks for java.lang.NoClassDefFoundError, java.lang.NoSuchMethodError and java.lang.NoSuchFieldError.</li>
  * <li>Removed body of findPossibleStaticLoggerBinderPathSet() method.</li>
  * <li>Removed body of reportMultipleBindingAmbiguity() method.</li>
@@ -130,7 +131,7 @@ public final class LoggerFactory {
       Set staticLoggerBinderPathSet = findPossibleStaticLoggerBinderPathSet();
       reportMultipleBindingAmbiguity(staticLoggerBinderPathSet);
       // the next line does the binding
-      StaticLoggerBinder.getSingleton();
+      GwtStaticLoggerBinder.getSingleton();
       INITIALIZATION_STATE = SUCCESSFUL_INITIALIZATION;
       reportActualBinding(staticLoggerBinderPathSet);
       emitSubstituteLoggerWarning();
@@ -161,7 +162,7 @@ public final class LoggerFactory {
 
   private final static void versionSanityCheck() {
     try {
-      String requested = StaticLoggerBinder.REQUESTED_API_VERSION;
+      String requested = GwtStaticLoggerBinder.REQUESTED_API_VERSION;
 
       boolean match = false;
       for (int i = 0; i < API_COMPATIBILITY_LIST.length; i++) {
@@ -203,7 +204,7 @@ public final class LoggerFactory {
 
   private static void reportActualBinding(Set staticLoggerBinderPathSet) {
     if (isAmbiguousStaticLoggerBinderPathSet(staticLoggerBinderPathSet)) {
-      Util.report("Actual binding is of type ["+StaticLoggerBinder.getSingleton().getLoggerFactoryClassStr()+"]");
+      Util.report("Actual binding is of type ["+GwtStaticLoggerBinder.getSingleton().getLoggerFactoryClassStr()+"]");
     }
   }
 
@@ -246,7 +247,7 @@ public final class LoggerFactory {
     }
     switch (INITIALIZATION_STATE) {
       case SUCCESSFUL_INITIALIZATION:
-        return StaticLoggerBinder.getSingleton().getLoggerFactory();
+        return GwtStaticLoggerBinder.getSingleton().getLoggerFactory();
       case NOP_FALLBACK_INITIALIZATION:
         return NOP_FALLBACK_FACTORY;
       case FAILED_INITIALIZATION:

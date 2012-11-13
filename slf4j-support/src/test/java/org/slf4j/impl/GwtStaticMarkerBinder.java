@@ -15,51 +15,50 @@
  */
 package org.slf4j.impl;
 
-import org.slf4j.helpers.NOPMDCAdapter;
-import org.slf4j.spi.MDCAdapter;
+import org.slf4j.IMarkerFactory;
+import org.slf4j.helpers.BasicMarkerFactory;
+import org.slf4j.spi.MarkerFactoryBinder;
 
 /**
- * Static MDC Binder.
+ * GWT Static Marker Binder.
  * <p>
  * Created: 28th November 2011.
  *
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class StaticMDCBinder {
+public class GwtStaticMarkerBinder implements MarkerFactoryBinder {
   /** The singleton instance of this class. */
-  public static final StaticMDCBinder SINGLETON = new StaticMDCBinder();
+  public static final GwtStaticMarkerBinder SINGLETON = new GwtStaticMarkerBinder();
   
-  /** The MDC adapter. */
-  private final MDCAdapter mdcAdapter = new NOPMDCAdapter();
+  /** The marker factory. */
+  private final IMarkerFactory markerFactory = new BasicMarkerFactory();
   
-  /** The MDC adapter class string. */
-  private final String mdcAdapterClassStr = NOPMDCAdapter.class.getName();
+  /** The marker factory class string. */
+  private final String markerFactoryClasStr = BasicMarkerFactory.class.getName();
   
   /**
-   * Retrieve the MDC adapter.
-   *
-   * @return The MDC adapter.
+   * @see MarkerFactoryBinder#getMarkerFactory()
    */
-  public MDCAdapter getMDCA() {
-    return this.mdcAdapter;
+  @Override
+  public IMarkerFactory getMarkerFactory() {
+    return this.markerFactory;
   }
-  
+
   /**
-   * Retrieve the MDC adapter class string.
-   *
-   * @return The MDC adapter class string.
+   * @see MarkerFactoryBinder#getMarkerFactoryClassStr()
    */
-  public String  getMDCAdapterClassStr() {
-    return this.mdcAdapterClassStr;
+  @Override
+  public String getMarkerFactoryClassStr() {
+    return this.markerFactoryClasStr;
   }
-  
+
   /**
-   * Construct a new Static MDC Binder.
+   * Construct a new Static Marker Binder.
    * <p>
    * This constructor is declared <code>private</code> to prevent external
    * instantiation.
    */
-  private StaticMDCBinder() {
+  private GwtStaticMarkerBinder() {
   }
 }

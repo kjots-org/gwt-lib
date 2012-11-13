@@ -29,7 +29,7 @@ import java.util.Map;
 import org.slf4j.helpers.NOPMDCAdapter;
 import org.slf4j.helpers.BasicMDCAdapter;
 import org.slf4j.helpers.Util;
-import org.slf4j.impl.StaticMDCBinder;
+import org.slf4j.impl.GwtStaticMDCBinder;
 import org.slf4j.spi.MDCAdapter;
 
 /**
@@ -59,6 +59,7 @@ import org.slf4j.spi.MDCAdapter;
  * 
  * Modified for use in <em>GWT</em> by <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>:
  * <ul>
+ * <li>Changed to use org.slf4j.impl.GwtStaticMDCBinder instead of org.slf4j.impl.StaticMDCBinder.</li>
  * <li>Removed catch block for java.lang.NoClassDefFoundError.</li>
  * </ul>
  * 
@@ -76,7 +77,7 @@ public class MDC {
 
   static {
     try {
-      mdcAdapter = StaticMDCBinder.SINGLETON.getMDCA();
+      mdcAdapter = GwtStaticMDCBinder.SINGLETON.getMDCA();
     } catch (Exception e) {
       // we should never get here
       Util.report("MDC binding unsuccessful.", e);

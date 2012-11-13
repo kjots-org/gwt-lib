@@ -26,9 +26,9 @@ import org.slf4j.spi.MDCAdapter;
  * @author <a href="mailto:kjots@kjots.org">Karl J. Ots &lt;kjots@kjots.org&gt;</a>
  * @since 1.0
  */
-public class StaticMDCBinder {
+public class GwtStaticMDCBinder {
   /** The singleton instance of this class. */
-  public static final StaticMDCBinder SINGLETON = new StaticMDCBinder();
+  public static final GwtStaticMDCBinder SINGLETON = new GwtStaticMDCBinder();
   
   /** The MDC adapter. */
   private final MDCAdapter mdcAdapter = new NOPMDCAdapter();
@@ -60,6 +60,6 @@ public class StaticMDCBinder {
    * This constructor is declared <code>private</code> to prevent external
    * instantiation.
    */
-  private StaticMDCBinder() {
+  private GwtStaticMDCBinder() {
   }
 }
