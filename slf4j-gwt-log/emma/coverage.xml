@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.1.5320 (stable) report, generated Wed Aug 08 22:15:09 EST 2012 -->
+<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.1.5320 (stable) report, generated Wed Nov 14 02:50:58 EST 2012 -->
 
 <report>
   <stats>
@@ -221,13 +221,13 @@
         <coverage type="block, %" value="33%  (24/73)"/>
         <coverage type="line, %" value="35%  (8/23)"/>
 
-        <srcfile name="StaticMDCBinder.java">
+        <srcfile name="GwtStaticMDCBinder.java">
           <coverage type="class, %" value="0%   (0/1)"/>
           <coverage type="method, %" value="0%   (0/4)"/>
           <coverage type="block, %" value="0%   (0/23)"/>
           <coverage type="line, %" value="0%   (0/7)"/>
 
-          <class name="StaticMDCBinder">
+          <class name="GwtStaticMDCBinder">
             <coverage type="class, %" value="0%   (0/1)"/>
             <coverage type="method, %" value="0%   (0/4)"/>
             <coverage type="block, %" value="0%   (0/23)"/>
@@ -238,7 +238,7 @@
               <coverage type="block, %" value="0%   (0/5)"/>
               <coverage type="line, %" value="0%   (0/1)"/>
             </method>
-            <method name="StaticMDCBinder (): void">
+            <method name="GwtStaticMDCBinder (): void">
               <coverage type="method, %" value="0%   (0/1)"/>
               <coverage type="block, %" value="0%   (0/12)"/>
               <coverage type="line, %" value="0%   (0/4)"/>
@@ -255,13 +255,13 @@
             </method>
           </class>
         </srcfile>
-        <srcfile name="StaticMarkerBinder.java">
+        <srcfile name="GwtStaticMarkerBinder.java">
           <coverage type="class, %" value="0%   (0/1)"/>
           <coverage type="method, %" value="0%   (0/4)"/>
           <coverage type="block, %" value="0%   (0/23)"/>
           <coverage type="line, %" value="0%   (0/7)"/>
 
-          <class name="StaticMarkerBinder">
+          <class name="GwtStaticMarkerBinder">
             <coverage type="class, %" value="0%   (0/1)"/>
             <coverage type="method, %" value="0%   (0/4)"/>
             <coverage type="block, %" value="0%   (0/23)"/>
@@ -272,7 +272,7 @@
               <coverage type="block, %" value="0%   (0/5)"/>
               <coverage type="line, %" value="0%   (0/1)"/>
             </method>
-            <method name="StaticMarkerBinder (): void">
+            <method name="GwtStaticMarkerBinder (): void">
               <coverage type="method, %" value="0%   (0/1)"/>
               <coverage type="block, %" value="0%   (0/12)"/>
               <coverage type="line, %" value="0%   (0/4)"/>
@@ -289,13 +289,13 @@
             </method>
           </class>
         </srcfile>
-        <srcfile name="StaticLoggerBinder.java">
+        <srcfile name="GwtStaticLoggerBinder.java">
           <coverage type="class, %" value="100% (1/1)"/>
           <coverage type="method, %" value="80%  (4/5)"/>
           <coverage type="block, %" value="89%  (24/27)"/>
           <coverage type="line, %" value="89%  (8/9)"/>
 
-          <class name="StaticLoggerBinder">
+          <class name="GwtStaticLoggerBinder">
             <coverage type="class, %" value="100% (1/1)"/>
             <coverage type="method, %" value="80%  (4/5)"/>
             <coverage type="block, %" value="89%  (24/27)"/>
@@ -311,7 +311,7 @@
               <coverage type="block, %" value="100% (7/7)"/>
               <coverage type="line, %" value="100% (2/2)"/>
             </method>
-            <method name="StaticLoggerBinder (): void">
+            <method name="GwtStaticLoggerBinder (): void">
               <coverage type="method, %" value="100% (1/1)"/>
               <coverage type="block, %" value="100% (12/12)"/>
               <coverage type="line, %" value="100% (4/4)"/>
@@ -321,7 +321,7 @@
               <coverage type="block, %" value="100% (3/3)"/>
               <coverage type="line, %" value="100% (1/1)"/>
             </method>
-            <method name="getSingleton (): StaticLoggerBinder">
+            <method name="getSingleton (): GwtStaticLoggerBinder">
               <coverage type="method, %" value="100% (1/1)"/>
               <coverage type="block, %" value="100% (2/2)"/>
               <coverage type="line, %" value="100% (1/1)"/>
