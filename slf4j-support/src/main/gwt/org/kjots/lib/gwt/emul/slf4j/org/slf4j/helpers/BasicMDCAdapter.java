@@ -40,6 +40,8 @@ import java.util.Map;
  * <ul>
  * <li>Added inner ValueWrapper class.</li>
  * <li>Changed <code>inheritableThreadLocal</code> field to be an instance of ValueWrapper.</li>
+ * <li>Removed all usages of <code>Collections.synchronizedMap</code>.</li>
+ * <li>Updated <code>isJDK14()</code> to return <code>false</code>.
  * </ul>
  * 
  * @author Ceki Gulcu
@@ -67,13 +69,7 @@ public class BasicMDCAdapter implements MDCAdapter {
   }
 
   static boolean isJDK14() {
-    try {
-      String javaVersion = System.getProperty("java.version");
-      return javaVersion.startsWith("1.4");
-    } catch(SecurityException se) {
-      // punt and assume JDK 1.5 or later
-      return false;
-    }
+    return false;
   }
 
   static boolean IS_JDK14 = isJDK14();
@@ -97,7 +93,7 @@ public class BasicMDCAdapter implements MDCAdapter {
     }
     Map map = (Map) inheritableThreadLocal.get();
     if (map == null) {
-      map = Collections.synchronizedMap(new HashMap());
+      map = new HashMap();
       inheritableThreadLocal.set(map);
     }
     map.put(key, val);
@@ -164,7 +160,7 @@ public class BasicMDCAdapter implements MDCAdapter {
   public Map getCopyOfContextMap() {
     Map oldMap = (Map) inheritableThreadLocal.get();
     if (oldMap != null) {
-       Map newMap = Collections.synchronizedMap(new HashMap());
+       Map newMap = new HashMap();
        synchronized (oldMap) {
          newMap.putAll(oldMap);
        }
@@ -175,7 +171,7 @@ public class BasicMDCAdapter implements MDCAdapter {
   }
 
   public void setContextMap(Map contextMap) {
-    Map map = Collections.synchronizedMap(new HashMap(contextMap));
+    Map map = new HashMap(contextMap);
     inheritableThreadLocal.set(map);
   }
 
